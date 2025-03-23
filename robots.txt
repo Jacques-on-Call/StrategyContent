@@ -1,0 +1,9 @@
+User-agent: *
+Disallow:
+Disallow: /cgi-bin/
+Disallow: /privacy.html/
+Disallow: /jacques-damhuis.html
+Disallow: /contact.html
+Disallow: /contact-success.html
+
+Sitemap: https://strategycontent.agency/sitemap.xml

@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --blue: #6CA0DC;
+    --green: #C7EA46;
+    --scarlet: #FF2400;
+    --grey: #A9A9A9;
+    --link-light: #0000FF;
+    --link-dark: #C7EA46;
+    --link-on-blue: #000000;
+    --link-on-black: #C7EA46;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-theme {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.dark-theme {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+a {
+    color: var(--link-light);
+}
+
+.dark-theme a {
+    color: var(--link-dark);
+}
+
+a:hover {
+    color: #ff6347;
+}
+
+header {
+    background-color: var(--blue);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    height: 60px;
+    cursor: pointer;
+}
+
+.hamburger {
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #b3f0b3;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-nav.show-menu {
+    right: 0;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.main-nav ul li {
+    margin-bottom: 20px;
+}
+
+.main-nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.friendly-message {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social-links a {
+    color: #000;
+    text-decoration: none;
+}
+
+.main-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 0;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.get-quote {
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    background-color: var(--scarlet);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 9999;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 200px;
+}
+
+.get-quote:hover {
+    background-color: #FF4500;
+}
+
+.chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--grey);
+    border: 2px solid var(--green);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chatbot:hover, .chatbot.active {
+    background-color: var(--green);
+}
+
+.container {
+    padding: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.light-theme .container:nth-child(even),
+.dark-theme .container:nth-child(even) {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.light-theme .container:nth-child(even) a,
+.dark-theme .container:nth-child(even) a {
+    color: var(--link-on-blue);
+}
+
+ .hero-section {
+     text-align: center;
+     padding: 2rem 0;
+     background-color: #C7EA46;
+   }
+   
+   .hero-section svg {
+     max-width: 200px;
+     height: auto;
+     margin-bottom: 1rem;
+   }
+   
+   .hero-section h1 {
+     font-size: 3.0rem;
+     margin-bottom: 0.5rem; 
+   }
+   
+   .hero-section .slogan { 
+     font-size: 1.4rem;
+     font-weight: 600;
+   }
+
+.caption {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+.cta-wrapper {
+    text-align: center; /* Center-align the CTA button inside this wrapper */
+}
+.cta-button {
+    display: inline-block;
+    background-color: var(--green);
+    color: var(--black); /* Button text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    margin: 20px auto; /* This ensures the button is centered with some spacing */
+    text-align: center; /* Align text inside the button */
+}
+
+.cta-button a {
+    color: var(--black); /* Ensures link color inside the CTA button */
+    text-decoration: none;
+}
+
+.cta-button a:hover {
+    color: var(--scarlet); /* Hover effect for links inside the button */
+}
+
+footer {
+    background-color: var(--black);
+    color: var(--white); /* Applies to regular text */
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+footer a {
+    color: var(--link-on-black); /* This applies only to links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff6347; /* Change hover effect if desired */
+}
+
+@media (max-width: 768px) {
+    .get-quote {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .main-nav {
+        width: 100%;
+        text-align: center;
+    }
+}
+.svg-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.svg-container object {
+    width: 100%;
+    height: auto;
+}
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #search-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .blog-post {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
