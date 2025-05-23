@@ -1,78 +1,194 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-
-<url>
-  <loc>https://strategycontent.agency/index.html</loc>
-  <lastmod>2025-02-03T07:06:32+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<!-- test -->
-<url>
-  <loc>https://strategycontent.agency/about.html</loc>
-  <lastmod>2025-01-26T16:29:28+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/services/services.html</loc>
-  <lastmod>2024-12-14T11:37:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/blog/blogs.html</loc>
-  <lastmod>2024-12-04T16:51:30+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://strategycontent.agency/services/content-marketing.html</loc>
-  <lastmod>2024-12-14T11:31:50+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/services/affordable-seo-services.html</loc>
-  <lastmod>2024-12-14T11:30:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/services/copywriting.html</loc>
-  <lastmod>2024-12-14T11:35:13+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/services/email-marketing.html</loc>
-  <lastmod>2024-12-14T11:36:35+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/services/social-media-management.html</loc>
-  
-  <lastmod>2024-12-14T11:38:25+00:00 </lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/blog/seo-for-small-business.html</loc>
-  <lastmod>2024-12-11T17:23:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/blog/storytelling-in-branding.html</loc>
-  <lastmod>2024-12-04T19:59:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/blog/social-media-privacy.html</loc>
-  <lastmod>2024-12-04T19:57:44+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://strategycontent.agency/blog/mastering-email-subject-lines.html</loc>
-  <lastmod>2024-12-09T06:43:09+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://strategycontent.agency/index.html</loc>
+       <lastmod>2025-03-02T20:52:25+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/about.html</loc>
+       <lastmod>2025-04-02T08:25:03+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/services.html</loc>
+       <lastmod>2025-02-28T14:01:46+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/blogs.html</loc>
+       <lastmod>2024-12-04T16:51:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/contact/contact.html</loc>
+       <lastmod>2025-04-02T07:43:45+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/content-marketing.html</loc>
+       <lastmod>2025-02-17T08:01:01+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/affordable-seo-services.html</loc>
+       <lastmod>2025-02-17T07:40:21+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/copywriting.html</loc>
+       <lastmod>2025-02-17T21:03:22+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/privacy.html</loc>
+       <lastmod>2025-01-25T12:44:50+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/social-media-management.html</loc>
+       <lastmod>2025-02-26T12:02:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/services/email-marketing.html</loc>
+       <lastmod>2025-02-28T11:42:49+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/seo-for-small-business.html</loc>
+       <lastmod>2025-02-08T12:02:08+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/storytelling-in-branding.html</loc>
+       <lastmod>2024-12-04T19:59:20+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/social-media-privacy.html</loc>
+       <lastmod>2024-12-04T19:57:44+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/mastering-email-subject-lines.html</loc>
+       <lastmod>2025-03-20T11:58:51+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://strategycontent.agency/blog/author/jacques-damhuis.html</loc>
+       <lastmod>2024-12-04T07:36:02+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+</urlset>
+
+
+
+
+<url>
+<loc>https://strategycontent.agency/</loc>
+<lastmod>2025-03-02T20:52:25+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/index.html</loc>
+<lastmod>2025-03-02T20:52:25+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/about.html</loc>
+<lastmod>2025-02-15T14:59:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/services.html</loc>
+<lastmod>2025-02-28T14:01:46+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/blogs.html</loc>
+<lastmod>2024-12-04T16:51:30+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/contact/contact.html</loc>
+<lastmod>2025-03-06T06:52:53+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/content-marketing.html</loc>
+<lastmod>2025-02-17T08:01:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/affordable-seo-services.html</loc>
+<lastmod>2025-02-17T07:40:21+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/copywriting.html</loc>
+<lastmod>2025-02-17T21:03:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/privacy.html</loc>
+<lastmod>2025-01-25T12:44:50+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/social-media-management.html</loc>
+<lastmod>2025-02-28T14:02:46+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/services/email-marketing.html</loc>
+<lastmod>2025-02-28T11:42:49+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/seo-for-small-business.html</loc>
+<lastmod>2025-02-08T12:02:08+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/storytelling-in-branding.html</loc>
+<lastmod>2024-12-04T19:59:20+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/social-media-privacy.html</loc>
+<lastmod>2024-12-04T19:57:44+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/mastering-email-subject-lines.html</loc>
+<lastmod>2025-03-20T11:58:51+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://strategycontent.agency/blog/author/jacques-damhuis.html</loc>
+<lastmod>2024-12-04T07:36:02+00:00</lastmod>
+<priority>0.51</priority>
+</url>
+
+
+
 </urlset>
