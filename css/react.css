@@ -1,0 +1,204 @@
+/* General container */
+/* Decision Style Quiz Enhanced Styles */
+
+
+/* Quiz container - works with any background */
+.interactive-section {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Progress bar styling */
+.progress-container {
+  width: 100%;
+  background-color: var(--light-grey);
+  height: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+/* Question styling */
+.questions-container {
+  background: var(--white);
+  color: var(--black);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.questions-container h3 {
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.questions-container h4 {
+  color: var(--dark-grey);
+  margin-bottom: 10px;
+}
+
+/* Option button styling - high contrast & visible on any background */
+.option-button {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  text-align: left;
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  background-color: var(--light-blue);
+  border-color: var(--blue);
+}
+
+/* Results styling 
+.results-container {
+  background: var(--white);
+  color: var(--black);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h2, 
+.results-container h3 {
+  color: var(--blue);
+} */
+
+/* Add to your existing CSS */
+.results-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.results-container h3 {
+  color: var(--dark-grey);
+  margin-top: 20px;
+}
+
+.results-container ul li {
+  margin-bottom: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  background: var(--light-grey);
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Metric visualization */
+.metric {
+  background: rgba(0, 57, 113, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.metric h4 {
+  color: var(--dark-grey);
+  margin: 0 0 10px 0;
+}
+
+.metric-bar {
+  height: 8px;
+  background: var(--light-grey);
+  border-radius: 4px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.metric-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.spectrum-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--medium-grey);
+  font-size: 0.9em;
+}
+
+/* Action steps */
+.action-step {
+  background: rgba(199, 234, 70, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--light-green);
+}
+
+.action-step h5 {
+  margin: 0 0 5px 0;
+  color: var(--green);
+}
+
+.action-step p {
+  margin: 0;
+  color: var(--dark-grey);
+}
+
+/* Button styling with consistent visibility */
+.cta-button {
+  background-color: var(--green);
+  color: var(--white) !important;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Override for container alternating backgrounds */
+.container:nth-child(odd) .questions-container,
+.container:nth-child(odd) .results-container,
+.container:nth-child(even) .questions-container,
+.container:nth-child(even) .results-container {
+  background: var(--white);
+  color: var(--black);
+}
+
+.container:nth-child(odd) .option-button,
+.container:nth-child(even) .option-button {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* Responsive grid layouts */
+@media (max-width: 768px) {
+  .metrics-grid,
+  .action-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
