@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "start": "webpack serve --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack/webpack.prod.js",
+    "start": "webpack serve --config webpack/webpack.dev.cjs",
+    "build": "webpack --config webpack/webpack.prod.cjs",
     "lint": "eslint .",
-    "analyze": "webpack --config webpack/webpack.prod.js --env analyze"
+    "analyze": "webpack --config webpack/webpack.prod.cjs --env analyze"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
