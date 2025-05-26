@@ -1,0 +1,385 @@
+/* ===== MAIN QUIZ CONTAINER ===== */
+.quiz-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: var(--green);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* ===== INTRO AND QUESTION SECTIONS ===== */
+/* These need white/light backgrounds for readability */
+#intro-container.intro,
+.question {
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#intro-container h3,
+.question h4,
+.question p {
+    color: var(--black) !important;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--light-green);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+/* ===== OPTION BUTTONS ===== */
+/* Replace your existing .option-button styles with this: */
+
+.quiz-option-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    text-align: left;
+    background: var(--white);  /* Changed: Start with white background */
+    color: #000000 !important;
+    border: 2px solid var(--blue);  /* Changed: Blue border for visibility */
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease;
+}
+
+.quiz-option-btn:hover {
+    background-color: var(--light-grey);
+    border-color: var(--blue);
+    color: var(--black) !important;
+}
+
+.quiz-option-btn.selected {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: var(--white) !important;  /* White text on blue background */
+}
+
+/* ===== RESULTS CONTAINER ===== */
+/* Keep results with green background but ensure text is white */
+.quiz-container .results-container {
+    background-color: transparent; /* Let the green container background show through */
+    color: #000000 !important;
+    padding: 0; /* Remove extra padding since it's already on the main container */
+}
+
+/* ===== RESULTS CONTENT STYLING ===== */
+/* Profile badge - keep existing gradient */
+.quiz-container .profile-badge {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    color: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 57, 113, 0.2);
+		font-size: 8em;
+    text-align: center; /* Center content for better look */
+}
+
+.quiz-container .profile-badge h2,
+.quiz-container .profile-badge p {
+    color: var(--white) !important;
+}
+
+/* Cards within results - white background for readability */
+.quiz-container .card {
+    background: var(--white);
+    color: var(--black) !important;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--light-grey);
+    margin-bottom: 15px; /* Add some spacing between cards */
+}
+
+.quiz-container .card h3 {
+    color: var(--blue) !important;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-green);
+    padding-bottom: 8px;
+}
+
+.quiz-container .card h4,
+.quiz-container .card h5,
+.quiz-container .card p,
+.quiz-container .card li {
+    color: var(--black) !important;
+}
+
+/* Spectrum visualization */
+.quiz-container .spectrum-visualization {
+    margin-bottom: 20px;
+}
+
+.quiz-container .spectrum-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quiz-container .spectrum-label {
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
+.quiz-container .spectrum-label span:first-child {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.quiz-container .spectrum-bar {
+    flex: 1;
+    height: 10px;
+    background: var(--light-grey);
+    border-radius: 5px;
+    margin: 0 10px;
+    overflow: hidden;
+}
+
+.quiz-container .spectrum-fill {
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--blue); /* Default fill color */
+}
+
+.quiz-container .spectrum-percentage {
+    font-weight: bold;
+    color: var(--blue);
+    min-width: 30px;
+    text-align: right;
+}
+
+/* Insight boxes and content strategy */
+.quiz-container .insight-box,
+.quiz-container .content-strategy {
+    background: rgba(0, 57, 113, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.quiz-container .insight-box p,
+.quiz-container .content-strategy p {
+    color: var(--black) !important;
+    line-height: 1.6;
+}
+
+/* Trait tags */
+.quiz-container .traits-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.quiz-container .trait-tag {
+    display: inline-block;
+    background: var(--white);
+    color: var(--black) !important;
+    border: 2px solid var(--blue);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Action steps */
+.quiz-container .action-steps {
+    margin-bottom: 20px;
+}
+
+.quiz-container .action-step {
+    background: rgba(199, 234, 70, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--light-green);
+    margin-bottom: 10px;
+}
+
+.quiz-container .action-step h5 {
+    color: var(--green);
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.quiz-container .action-step p {
+    color: var(--black) !important;
+    line-height: 1.5;
+}
+
+/* Lists */
+.quiz-container .strengths-list,
+.quiz-container .considerations-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.quiz-container .strengths-list li,
+.quiz-container .considerations-list li {
+    color: var(--black) !important;
+    margin-bottom: 8px;
+}
+
+.quiz-container .check-icon {
+    color: var(--green);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.quiz-container .warning-icon {
+    color: orange; /* Or another warning color */
+    margin-right: 8px;
+}
+
+/* Results footer */
+.quiz-container .results-footer {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.quiz-container .call-to-action h3,
+.quiz-container .call-to-action p {
+    color: var(--white) !important;
+}
+
+/* ===== BUTTONS ===== */
+.quiz-container button {
+    background-color: var(--blue);
+    color: var(--white) !important;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    display: inline-block; /* To allow margin on sides if needed */
+}
+
+.quiz-container button:hover {
+    background-color: #002147; /* Darker blue on hover */
+}
+
+/* Start button */
+.quiz-container #start-button {
+    background-color: var(--blue);
+}
+
+/* Next button */
+.quiz-container #next-button {
+    background-color: var(--scarlet) !important;
+}
+
+.quiz-container #next-button:hover {
+    background-color: var(--dark-scarlet) !important;
+}
+
+.quiz-container #next-button:disabled {
+    background-color: var(--light-grey) !important;
+    color: var(--grey) !important;
+    cursor: not-allowed;
+}
+
+/* CTA button in results */
+.quiz-container .cta-button {
+    background: var(--white);
+    color: var(--blue) !important;
+    border: 2px solid var(--white);
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+}
+
+.quiz-container .cta-button:hover {
+    background: var(--light-green);
+    border-color: var(--light-green);
+}
+
+/* ===== ANIMATIONS AND RESPONSIVE ===== */
+.fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.results-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--white);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quiz-container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .spectrum-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .spectrum-label {
+        margin-bottom: 8px;
+        min-width: auto;
+    }
+
+    .spectrum-bar {
+        margin: 0 0 8px 0;
+    }
+}
