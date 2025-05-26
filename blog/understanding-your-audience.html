@@ -145,6 +145,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N7J8K745');</script>
 			<!-- End Google Tag Manager -->
+       <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof renderComponent1 === 'function') { renderComponent1('decision-style-quiz-root'); }
+    if (typeof renderComponent2 === 'function') { renderComponent2('audience-preferences-quiz-root'); }
+  });
+</script>
 </head>
 
 <body class="light-theme">
@@ -272,12 +278,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<!-- Interactive Component 1: After "Why Knowing Your Audience Matters" -->
 					<div id="audience-card-root">
 					</div>
-					<!-- TEST HTML - place in static HTML outside React -->
 
-  <div style="background: pink; padding: 20px;">
-    <h3>JS is disabled – you're seeing this fallback!</h3>
-  </div>
-					<noscript>
+
+  					<noscript>
   <div class="interactive-section">
     <div class="questions-container">
       <h3>Your Decision-Making Style</h3>
@@ -341,7 +344,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   						<br>
 
   <!-- Interactive Component 2 -->
-  					<div id="component2">
+  					<div id="audience-preferences-quiz-root">
     
   					</div>
 					</div>

@@ -348,7 +348,7 @@ const AudiencePreferencesQuiz = () => {
     if (formatPreference === 'a') {
       insights.push({
         category: 'Content Length',
-        insight: 'Your audience values depth over brevity - they're willing to engage with longer content that provides comprehensive value.',
+        insight: "Your audience values depth over brevity - they're willing to engage with longer content that provides comprehensive value.",
         tip: 'Consider creating "content series" that build upon each other, allowing for both depth and digestible segments.'
       });
     } else if (formatPreference === 'b') {
@@ -620,16 +620,7 @@ const AudiencePreferencesQuiz = () => {
   );
 };
 
-export default AudiencePreferencesQuiz;
-// In AudiencePreferencesQuiz.js
-const AudiencePreferencesQuiz = () => {
-  // Your component logic here
-  // ...
-  return (
-    // Your component's JSX
-    <div>{/* ... */}</div>
-  );
-};
+
 
 // Export the component
 export default AudiencePreferencesQuiz;
