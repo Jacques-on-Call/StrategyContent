@@ -1,5 +1,5 @@
 export const QuestionsData = {
-  component1: [
+  professionalAuthorityAssessmentQuestions: [
     {
       id: 'q1_story_approach',
       text: 'Which statement best describes your current brand storytelling approach?',
@@ -21,7 +21,7 @@ export const QuestionsData = {
       }
     }
   ],
-  component2: [
+  clientResonanceAnalyzerQuestions: [
     {
       id: 'q2_audience_understanding',
       text: "How well do you feel you understand your primary audience's deepest motivations?",
@@ -41,7 +41,7 @@ export const QuestionsData = {
       scoring: { type: 'direct' }
     }
   ],
-  component3: [
+  professionalPresenceAuditQuestions: [
     {
       id: 'q3_channel_effectiveness',
       text: 'For each channel, select how effective you believe it is for your brand. Then, choose your primary storytelling format for that channel.',
@@ -70,7 +70,7 @@ export const QuestionsData = {
       }
     }
   ],
-  component4: [
+  authenticityIntegrityCheckQuestions: [
     {
       id: 'q4_authenticity_statement',
       text: "Which statement best reflects your brand's current approach to authenticity in its messaging?",

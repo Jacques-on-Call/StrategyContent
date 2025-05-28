@@ -10,8 +10,31 @@ import AuthenticityIntegrityCheck from './AuthenticityIntegrityCheck.js';
 import AuthorityActionBlueprint from './AuthorityActionBlueprint.js';
 import { processAnswer } from '../utils/scoringEngine.js';
 import ResultsDisplay from './ResultsDisplay.js'; // Uncommented
-import { QuestionsData } from '../data/questions.js'; // Added import
-import { VisualConfigsData } from '../data/visualConfigs.js'; // Added import
+import { QuestionsData } from '../data/questions.js';
+import { VisualConfigsData } from '../data/visualConfigs.js';
+
+// Component Imports for the Map
+import ProfessionalAuthorityAssessment from './ProfessionalAuthorityAssessment.js';
+import ClientResonanceAnalyzer from './ClientResonanceAnalyzer.js';
+import ProfessionalPresenceAudit from './ProfessionalPresenceAudit.js';
+import AuthenticityIntegrityCheck from './AuthenticityIntegrityCheck.js';
+import AuthorityActionBlueprint from './AuthorityActionBlueprint.js';
+
+const componentMap = {
+  ProfessionalAuthorityAssessment,
+  ClientResonanceAnalyzer,
+  ProfessionalPresenceAudit,
+  AuthenticityIntegrityCheck,
+  AuthorityActionBlueprint
+};
+
+const brandStoryQuizSteps = [
+  { step: 1, componentName: 'ProfessionalAuthorityAssessment', questionsDataKey: 'professionalAuthorityAssessmentQuestions' },
+  { step: 2, componentName: 'ClientResonanceAnalyzer', questionsDataKey: 'clientResonanceAnalyzerQuestions' },
+  { step: 3, componentName: 'ProfessionalPresenceAudit', questionsDataKey: 'professionalPresenceAuditQuestions' },
+  { step: 4, componentName: 'AuthenticityIntegrityCheck', questionsDataKey: 'authenticityIntegrityCheckQuestions' },
+  { step: 5, componentName: 'AuthorityActionBlueprint', questionsDataKey: 'authorityActionBlueprintQuestions' },
+];
 
 const QuizContainer = () => {
   const [currentView, setCurrentView] = useState('optIn'); // 'optIn', 'assessment', 'results'
@@ -129,20 +152,20 @@ const QuizContainer = () => {
   // This function is called by components (like Component2, Component3, Component4, Component5)
   // when they have completed all their internal questions.
   const handleComponentComplete = (completedComponentNumber) => {
-    if (completedComponentNumber < 5) {
-      const nextStep = completedComponentNumber + 1;
-      setCurrentStep(nextStep); // Update currentStep to render the next component
-      if (session) { // Update session progress
+    if (completedComponentNumber < brandStoryQuizSteps.length) { // Use brandStoryQuizSteps.length
+      const nextStepNumber = completedComponentNumber + 1;
+      setCurrentStep(nextStepNumber); 
+      if (session) { 
         const updatedSession = {
           ...session,
-          progress: { ...session.progress, currentComponentNumber: nextStep },
+          progress: { ...session.progress, currentComponentNumber: nextStepNumber },
           lastActive: Date.now(),
         };
         setSessionCookie(updatedSession);
         setSession(updatedSession);
       }
     } else {
-      // This is the last component (Component 5)
+      // This is the last component
       handleCompleteAssessment();
     }
   };
@@ -189,52 +212,44 @@ const QuizContainer = () => {
     // The dynamic choice logic (selecting different question sets based on answers)
     // would require further state management and logic in QuizContainer.
 
-    switch (currentStep) {
-      case 1:
-        return <ProfessionalAuthorityAssessment 
-                  onSubmitAnswer={handleAnswerSubmit} 
-                  componentNumber={1}
-                  questions={QuestionsData.component1} 
-                  onCompleteComponent={handleComponentComplete} 
-                />;
-      case 2:
-        return <ClientResonanceAnalyzer 
-                  onSubmitAnswer={handleAnswerSubmit} 
-                  componentNumber={2} 
-                  questions={QuestionsData.component2} 
-                  onCompleteComponent={handleComponentComplete} 
-                />;
-      case 3:
-        return <ProfessionalPresenceAudit 
-                  onSubmitAnswer={handleAnswerSubmit} 
-                  componentNumber={3} 
-                  questions={QuestionsData.component3} 
-                  onCompleteComponent={handleComponentComplete} 
-                />;
-      case 4:
-        return <AuthenticityIntegrityCheck 
-                  onSubmitAnswer={handleAnswerSubmit} 
-                  componentNumber={4} 
-                  questions={QuestionsData.component4} 
-                  onCompleteComponent={handleComponentComplete} 
-                />;
-      case 5:
-        return <AuthorityActionBlueprint 
-                  onSubmitAnswer={handleAnswerSubmit} 
-                  componentNumber={5} 
-                  questions={QuestionsData.component5} 
-                  onCompleteComponent={handleComponentComplete} 
-                />;
-      default:
-        return <div>Error: Unknown step.</div>;
-    }
+    // switch (currentStep) { // OLD LOGIC
+    //   case 1:
+    //     return <ProfessionalAuthorityAssessment 
+    //               onSubmitAnswer={handleAnswerSubmit} 
+    //               componentNumber={1}
+    //               questions={QuestionsData.professionalAuthorityAssessmentQuestions} 
+    //               onCompleteComponent={handleComponentComplete} 
+    //             />;
+    //   // ... cases for 2, 3, 4, 5
+    //   default:
+    //     return <div>Error: Unknown step.</div>;
+    // }
+    return null; // Placeholder, this specific renderCurrentComponent function is removed/replaced
   };
 
   if (currentView === 'assessment') {
+    const currentStepConfig = brandStoryQuizSteps.find(stepObj => stepObj.step === currentStep);
+
+    if (!currentStepConfig) {
+      return <div className="quiz-container error-message">Error: Configuration for step {currentStep} not found.</div>;
+    }
+    const CurrentAssessmentComponent = componentMap[currentStepConfig.componentName];
+    if (!CurrentAssessmentComponent) {
+      return <div className="quiz-container error-message">Error: Component {currentStepConfig.componentName} not found in map.</div>;
+    }
+    
+    const questionsForComponent = QuestionsData[currentStepConfig.questionsDataKey] || [];
+    const componentKey = `step-${currentStep}`;
+
     return (
-      <div className="quiz-container component-fade-in" key={currentStep}> {/* Applied quiz-container and animation class */}
-        {/* Optional: Could add a progress bar here based on currentStep / 5 */}
-        {renderCurrentComponent()}
+      <div className="quiz-container component-fade-in" key={componentKey}>
+        <CurrentAssessmentComponent
+          componentNumber={currentStep}
+          questions={questionsForComponent}
+          onSubmitAnswer={handleAnswerSubmit}
+          onCompleteComponent={handleComponentComplete}
+          // allResponses={allResponses} // Pass if needed by any component
+        />
       </div>
     );
   }
