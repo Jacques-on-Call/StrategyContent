@@ -1,11 +1,16 @@
 import React from 'react';
 
-const OptInHook = ({ onStartAssessment }) => {
+const OptInHook = ({ hookTitle, hookContext, buttonText, onStartAssessment }) => {
   return (
-    <div>
-      <h1>Your clients make split-second trust decisions. Does their first impression of your story build confidence or create doubt?</h1>
-      <p>Discover your unique Brand Story Blueprint—the same framework that helps industry leaders turn expertise into magnetic client attraction. Takes 3 minutes, reveals insights that typically cost thousands in consulting.</p>
-      <button onClick={onStartAssessment}>Begin Assessment</button>
+    <div style={{ textAlign: 'center', padding: '20px' }}> {/* Added basic styling for better presentation */}
+      <h1>{hookTitle}</h1>
+      <p style={{ fontSize: '1.1em', margin: '20px 0' }}>{hookContext}</p>
+      <button 
+        onClick={onStartAssessment} 
+        style={{ padding: '10px 20px', fontSize: '1.2em', cursor: 'pointer' }}
+      >
+        {buttonText}
+      </button>
     </div>
   );
 };

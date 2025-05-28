@@ -167,7 +167,13 @@ const QuizContainer = () => {
   };
 
   if (currentView === 'optIn') {
-    return <OptInHook onStartAssessment={handleStartAssessment} />;
+    const optInProps = {
+      hookTitle: "Your clients make split-second trust decisions. Does their first impression of your story build confidence or create doubt?",
+      hookContext: "Discover your unique Brand Story Blueprint—the same framework that helps industry leaders turn expertise into magnetic client attraction. Takes 3 minutes, reveals insights that typically cost thousands in consulting.",
+      buttonText: "Begin Assessment",
+      onStartAssessment: handleStartAssessment
+    };
+    return <OptInHook {...optInProps} />;
   }
 
   // Render logic for assessment components
