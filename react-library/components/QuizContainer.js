@@ -232,7 +232,7 @@ const QuizContainer = () => {
 
   if (currentView === 'assessment') {
     return (
-      <div>
+      <div className="quiz-container component-fade-in" key={currentStep}> {/* Applied quiz-container and animation class */}
         {/* Optional: Could add a progress bar here based on currentStep / 5 */}
         {renderCurrentComponent()}
       </div>

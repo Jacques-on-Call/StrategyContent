@@ -77,28 +77,26 @@ const Component4 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
   }
 
   return (
-    <div>
+    <div className="component-container"> {/* Added generic container class */}
       <h2>Component {componentNumber}: Authenticity & Trust Audit</h2>
-      <p>In today's market, authenticity isn't just a buzzword—it's the currency of trust. This section probes the alignment between your brand's proclaimed values and its operational reality, a critical factor in building lasting client relationships.</p>
+      <p className="context-text">In today's market, authenticity isn't just a buzzword—it's the currency of trust. This section probes the alignment between your brand's proclaimed values and its operational reality, a critical factor in building lasting client relationships.</p>
       
       <h3>{primaryQuestion.text}</h3>
-      <div>
+      <div className="radio-options-container"> {/* Added container for radio options */}
         {primaryQuestion.options.map(option => (
-          <div key={option.value} style={{ margin: '10px 0' }}>
-            <label style={{ 
-                display: 'block', 
-                padding: '10px', 
-                border: selectedPrimaryOptionValue === option.value ? '2px solid blue' : '1px solid #ccc',
-                borderRadius: '5px',
-                cursor: 'pointer'
-            }}>
+          <div key={option.value} className="radio-option-wrapper"> {/* Wrapper for each radio option */}
+            <label 
+              className={`radio-option-label ${selectedPrimaryOptionValue === option.value ? 'selected' : ''}`}
+              // The 'selected' class on label is for visual cues if CSS is designed for it.
+              // Actual check is via input:checked.
+            >
               <input
                 type="radio"
                 name={primaryQuestion.id}
                 value={option.value}
                 checked={selectedPrimaryOptionValue === option.value}
                 onChange={() => handlePrimaryOptionChange(option.value)}
-                style={{ marginRight: '10px' }}
+                // Inline style for marginRight removed, should be handled by CSS if needed
               />
               {option.text}
             </label>
@@ -107,7 +105,7 @@ const Component4 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
       </div>
 
       {currentFollowUpQuestion && (
-        <div style={{ marginTop: '20px' }}>
+        <div className="slider-container" style={{ marginTop: '20px' }}> {/* Added class, kept marginTop for spacing */}
           <h4>{currentFollowUpQuestion.text}</h4>
           <input
             type="range"
@@ -115,9 +113,9 @@ const Component4 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
             max={currentFollowUpQuestion.max}
             value={followUpSliderValue}
             onChange={(e) => handleSliderChange(e.target.value)}
-            style={{ width: '100%', margin: '10px 0' }}
+            // Inline style for width/margin removed or commented
           />
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="slider-labels"> {/* Applied class */}
             <span>{currentFollowUpQuestion.labels[0]} ({currentFollowUpQuestion.min})</span>
             {currentFollowUpQuestion.labels.length > 2 && <span>{currentFollowUpQuestion.labels[1]}</span>}
             <span>{currentFollowUpQuestion.labels[currentFollowUpQuestion.labels.length - 1]} ({currentFollowUpQuestion.max})</span>
@@ -129,15 +127,15 @@ const Component4 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
       <button
         onClick={handleSubmit}
         disabled={isSubmitDisabled()}
-        style={{ marginTop: '30px', padding: '10px 15px', cursor: isSubmitDisabled() ? 'not-allowed' : 'pointer' }}
+        className="quiz-button" // Applied class
       >
         Submit Answers
       </button>
 
-      <p style={{ marginTop: '30px', fontStyle: 'italic' }}>
+      <p className="relevance-text"> {/* Applied class */}
         <strong>Relevance:</strong> Misalignment here can subtly erode client trust. This audit helps pinpoint areas where your brand's walk might not match its talk, which is pivotal for long-term credibility.
       </p>
-      <p style={{ marginTop: '15px', fontWeight: 'bold' }}>
+      <p className="next-steps-text"> {/* Applied class */}
         Next up: The final piece of the puzzle—how all these elements combine to form your client's overall perception and experience.
       </p>
     </div>

@@ -1,53 +1,82 @@
 import React from 'react';
 
-const ResultsDisplay = ({ allResponses, currentViewingStep, visualConfigsData, questionsData }) => {
-  // For Component 1 Results
-  if (currentViewingStep === 1) {
-    const question1Id = questionsData?.component1?.[0]?.id;
-    const responseC1 = allResponses?.[1]?.[question1Id]; // Component number is 1 for keying in allResponses
-    const scoreC1 = responseC1?.score;
-    const valueC1 = responseC1?.value;
-
-    if (responseC1) {
-      let stageText = 'N/A';
-      const question1Options = questionsData?.component1?.[0]?.options;
-      if (question1Options) {
-        const foundOption = question1Options.find(option => option.value === valueC1);
-        if (foundOption) {
-          stageText = foundOption.text;
-        }
-      }
-
-      return (
-        <div>
-          <h2>Component 1 Results: Brand Story Maturity</h2>
-          <p>Your determined stage: {stageText}</p>
-          <p>(Score: {scoreC1})</p>
-          {/* Placeholder for future visualConfigsData usage, e.g., maturity wheel description */}
-          {/* visualConfigsData?.maturityWheel?.descriptions?.[valueC1] && 
-              <p>Details: {visualConfigsData.maturityWheel.descriptions[valueC1]}</p> 
-          */}
-        </div>
-      );
-    } else {
-      return <p>Component 1 results are not yet available.</p>;
-    }
+// Note: currentViewingStep prop is not used in this refactored version,
+// as it now displays a summary of all results.
+const ResultsDisplay = ({ allResponses, sessionData, questionsConfig, visualConfigsData }) => {
+  if (!allResponses || Object.keys(allResponses).length === 0) {
+    return (
+      <div className="results-container">
+        <h2>Assessment Results</h2>
+        <p className="loading-message">No responses yet, or still loading...</p>
+      </div>
+    );
   }
 
-  // Placeholder for other components or overall summary (currentViewingStep > 1 or other specific values)
-  // Example for a generic overall summary if currentViewingStep is, say, 6
-  // if (currentViewingStep === 6) {
-  //   return (
-  //     <div>
-  //       <h2>Overall Assessment Summary</h2>
-  //       <p>Detailed summary and personality archetype will be displayed here.</p>
-  //       <pre>{JSON.stringify(allResponses, null, 2)}</pre>
-  //     </div>
-  //   );
-  // }
+  // Calculate total score (example: sum of all scores)
+  let totalScore = 0;
+  Object.values(allResponses).forEach(componentResponses => {
+    Object.values(componentResponses).forEach(questionResponse => {
+      if (typeof questionResponse.score === 'number') {
+        totalScore += questionResponse.score;
+      }
+    });
+  });
 
-  // Default/General Case
-  return <p>Results will be shown here.</p>;
+  // Placeholder for personality (would be derived from tags collected in QuizContainer/scoringEngine)
+  const determinedPersonality = sessionData?.personalityProfile?.length > 0 
+    ? sessionData.personalityProfile.join(', ') 
+    : "To be determined";
+
+  return (
+    <div className="results-container">
+      <h2>Your Brand Story Blueprint: Summary</h2>
+      
+      <div className="results-summary">
+        <p>Thank you for completing the Brand Story Journey Assessment!</p>
+        <p>Session Token: {sessionData?.token || 'N/A'}</p>
+        <p>Total Calculated Score: <strong>{totalScore}</strong> (This is a raw sum, actual interpretation depends on scoring logic)</p>
+        <div className="profile-badge">
+          Your Tentative Profile: {determinedPersonality}
+        </div>
+      </div>
+
+      <div className="card-container">
+        <div className="card">
+          <h4>Key Insights & Recommendations</h4>
+          {/* This section would be dynamically populated based on visualConfigsData and responses */}
+          <p>Based on your answers, here are some areas to focus on:</p>
+          <ul>
+            <li>Clarify your core message (Example insight).</li>
+            <li>Explore new channels for content (Example insight).</li>
+          </ul>
+        </div>
+
+        <div className="card">
+          <h4>Next Steps</h4>
+          <p>Consider these actions to strengthen your brand story:</p>
+          <ul>
+            <li>Schedule a consultation to discuss these results.</li>
+            <li>Download your detailed report (Feature coming soon).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="debug-responses" style={{ marginTop: '30px', textAlign: 'left' }}>
+        <h4>Detailed Responses (for review):</h4>
+        <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-all', background: '#f0f0f0', padding: '10px', borderRadius: '5px' }}>
+          {JSON.stringify(allResponses, null, 2)}
+        </pre>
+      </div>
+
+      {/* Example of how to use visualConfigsData if it had content */}
+      {/* {visualConfigsData?.maturityWheel?.stages && (
+        <div className="card">
+          <h4>Maturity Wheel Information</h4>
+          <p>Number of stages: {visualConfigsData.maturityWheel.stages}</p>
+        </div>
+      )} */}
+    </div>
+  );
 };
 
 export default ResultsDisplay;

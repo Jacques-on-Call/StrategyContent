@@ -53,24 +53,25 @@ const Component2 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
     : currentQuestion.min; // Fallback, though useEffect should prevent this
 
   return (
-    <div>
+    <div className="component-container"> {/* Added generic container class */}
       <h2>Component {componentNumber}: Client Resonance Analyzer</h2>
-      <p>Exceptional service means nothing if your message doesn't resonate with your ideal client's deepest needs and aspirations. This section assesses how well your current communication likely connects with them.</p>
+      <p className="context-text">Exceptional service means nothing if your message doesn't resonate with your ideal client's deepest needs and aspirations. This section assesses how well your current communication likely connects with them.</p>
       
       <p>Question {currentQuestionIndex + 1} of {questions.length}</p>
       <h3>{currentQuestion.text}</h3>
 
       {currentQuestion.type === 'slider' && (
-        <div>
+        <div className="slider-container"> {/* Added container class */}
           <input
             type="range"
             min={currentQuestion.min}
             max={currentQuestion.max}
             value={currentSliderValue}
             onChange={(e) => handleSliderChange(currentQuestion.id, e.target.value)}
-            style={{ width: '100%', margin: '10px 0' }}
+            // Inline style for width can be kept if specific, or moved to CSS
+            // style={{ width: '100%', margin: '10px 0' }} 
           />
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="slider-labels"> {/* Applied class */}
             <span>{currentQuestion.labels[0]} ({currentQuestion.min})</span>
             {currentQuestion.labels.length > 2 && <span>{currentQuestion.labels[1]}</span>}
             <span>{currentQuestion.labels[currentQuestion.labels.length -1]} ({currentQuestion.max})</span>
@@ -81,17 +82,16 @@ const Component2 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
 
       <button
         onClick={handleNextClick}
-        // Button is always enabled for sliders as they have a default value.
+        className="quiz-button" // Applied class
         // disabled={componentAnswers[currentQuestion.id] === undefined} 
-        style={{ marginTop: '20px', padding: '10px 15px' }}
       >
         {isLastQuestion ? 'Finish Component' : 'Next Question'}
       </button>
 
-      <p style={{ marginTop: '30px', fontStyle: 'italic' }}>
+      <p className="relevance-text"> {/* Applied class */}
         <strong>Relevance:</strong> This assessment identifies whether your messaging resonates on a logical and emotional level, or if it's merely skimming the surface, failing to capture true interest.
       </p>
-      <p style={{ marginTop: '15px', fontWeight: 'bold' }}>
+      <p className="next-steps-text"> {/* Applied class */}
         Next up: Your message is one thing—where you deliver it changes everything. Let's explore your content distribution strategy.
       </p>
     </div>

@@ -64,21 +64,21 @@ const Component5 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
   }
 
   return (
-    <div>
+    <div className="component-container"> {/* Added generic container class */}
       <h2>Component {componentNumber}: Authority Action Blueprint</h2>
-      <p>You've journeyed through the core elements of your brand's story. Now it's time to consolidate your insights into a clear action plan. This final step helps you prioritize where to focus your efforts for maximum impact on your authority and client attraction.</p>
+      <p className="context-text">You've journeyed through the core elements of your brand's story. Now it's time to consolidate your insights into a clear action plan. This final step helps you prioritize where to focus your efforts for maximum impact on your authority and client attraction.</p>
       
       <h3>{currentQuestion.text}</h3>
 
-      <div style={{ marginTop: '20px' }}>
+      <div className="ranking-container" style={{ marginTop: '20px' }}> {/* Added class, kept marginTop */}
         {currentQuestion.items.map(item => (
-          <div key={item.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-            <label htmlFor={`rank-${item.id}`} style={{ flex: 1, marginRight: '10px' }}>{item.label}:</label>
+          <div key={item.id} className="ranking-item-row" style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}> {/* Added class, kept inline style for flex layout */}
+            <label htmlFor={`rank-${item.id}`} style={{ flex: 1, marginRight: '10px' }}>{item.label}:</label> {/* Kept inline style for flex item sizing */}
             <select
               id={`rank-${item.id}`}
               value={itemRanks[item.id] === null ? '' : itemRanks[item.id]}
               onChange={(e) => handleRankChange(item.id, e.target.value)}
-              style={{ padding: '8px', minWidth: '150px' }}
+              // Inline styles for padding/min-width removed, covered by general select CSS
             >
               <option value="" disabled>Select Rank...</option>
               {rankOptions.map(rank => (
@@ -92,15 +92,15 @@ const Component5 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
       <button
         onClick={handleSubmitRanks}
         disabled={!isRankingCompleteAndValid()}
-        style={{ marginTop: '30px', padding: '12px 20px', cursor: isRankingCompleteAndValid() ? 'pointer' : 'not-allowed' }}
+        className="quiz-button cta-button" // Applied general button and specific CTA class
       >
         Finalize Blueprint & View My Results
       </button>
 
-      <p style={{ marginTop: '30px', fontStyle: 'italic' }}>
+      <p className="relevance-text"> {/* Applied class */}
         <strong>Relevance:</strong> This blueprint isn't just an exercise; it's your strategic roadmap. By identifying your top priorities, you can channel your resources effectively, transforming insights into tangible improvements in how clients perceive and respond to your brand.
       </p>
-      <p style={{ marginTop: '20px', fontWeight: 'bold' }}>
+      <p className="next-steps-text" style={{ marginTop: '20px', fontWeight: 'bold' }}> {/* Applied class, kept inline for emphasis */}
         Congratulations! You're about to see how these pieces fit together to form your unique Brand Story Blueprint.
       </p>
     </div>

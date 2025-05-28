@@ -60,30 +60,30 @@ const Component3 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
   }
 
   return (
-    <div>
+    <div className="component-container"> {/* Added generic container class */}
       <h2>Component {componentNumber}: Professional Presence Audit</h2>
-      <p>Your clients consume content across a spectrum of channels. Understanding where your message is (or isn't) making an impact is crucial for optimizing your reach and relevance. This section evaluates your current content distribution and format strategy.</p>
+      <p className="context-text">Your clients consume content across a spectrum of channels. Understanding where your message is (or isn't) making an impact is crucial for optimizing your reach and relevance. This section evaluates your current content distribution and format strategy.</p>
       
       <h3>{currentQuestion.text}</h3>
 
-      <div style={{ overflowX: 'auto' }}> {/* For responsiveness on small screens */}
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+      <div style={{ overflowX: 'auto' }}> {/* This inline style for responsiveness can be kept or moved to a specific class if preferred */}
+        <table className="grid-table"> {/* Applied class */}
           <thead>
             <tr>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Channel</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Effectiveness</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Primary Format</th>
+              <th>Channel</th> {/* Removed inline styles, will be handled by .grid-table th */}
+              <th>Effectiveness</th>
+              <th>Primary Format</th>
             </tr>
           </thead>
           <tbody>
             {currentQuestion.channels && currentQuestion.channels.map(channel => (
               <tr key={channel.id}>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{channel.name}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+                <td>{channel.name}</td> {/* Removed inline styles, will be handled by .grid-table td */}
+                <td>
                   <select
                     value={gridSelections[channel.id]?.effectiveness === null ? '' : gridSelections[channel.id]?.effectiveness}
                     onChange={(e) => handleSelectionChange(channel.id, 'effectiveness', e.target.value)}
-                    style={{ padding: '5px', width: '100%' }}
+                    // Inline style for padding/width removed, should be handled by general select styling in CSS
                   >
                     <option value="" disabled>Select Effectiveness</option>
                     {currentQuestion.effectivenessLevels.map(level => (
@@ -91,11 +91,11 @@ const Component3 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
                     ))}
                   </select>
                 </td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+                <td>
                   <select
                     value={gridSelections[channel.id]?.format === null ? '' : gridSelections[channel.id]?.format}
                     onChange={(e) => handleSelectionChange(channel.id, 'format', e.target.value)}
-                    style={{ padding: '5px', width: '100%' }}
+                    // Inline style for padding/width removed
                   >
                     <option value="" disabled>Select Format</option>
                     {currentQuestion.formats.map(format => (
@@ -112,15 +112,15 @@ const Component3 = ({ onSubmitAnswer, componentNumber, questions, onCompleteComp
       <button
         onClick={handleSubmitGrid}
         disabled={!isGridComplete()}
-        style={{ marginTop: '20px', padding: '10px 15px', cursor: isGridComplete() ? 'pointer' : 'not-allowed' }}
+        className="quiz-button" // Applied class
       >
         Submit Selections
       </button>
 
-      <p style={{ marginTop: '30px', fontStyle: 'italic' }}>
+      <p className="relevance-text"> {/* Applied class */}
         <strong>Relevance:</strong> This audit highlights potential gaps or strengths in your channel strategy, ensuring your valuable content reaches your audience where they are most receptive.
       </p>
-      <p style={{ marginTop: '15px', fontWeight: 'bold' }}>
+      <p className="next-steps-text"> {/* Applied class */}
         Next up: We'll analyze how your brand's narrative builds (or erodes) trust and credibility with potential clients.
       </p>
     </div>
