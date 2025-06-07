@@ -40,6 +40,10 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+main {
+  padding-top: 60px;
+}
+
 a {
   color: var(--link-light);
   text-decoration: none;
@@ -173,7 +177,8 @@ img {
 }
 ul.breadcrumb {
   list-style: none;
-	padding: 30px;
+	margin-top: 0;
+	padding: 0;
 }
 ul.breadcrumb li {
   display: inline;
@@ -273,11 +278,16 @@ ul.breadcrumb li a:hover {
   font-size: 1.25rem;
   font-weight: 500;
 }
-.hero-content nav.breadcrumbs {
-  text-align: left;
-  max-width: 100%;
-  margin: 0 auto 1rem;
+
+/* New rule for breadcrumbs container in hero-banner */
+.hero-banner nav.breadcrumbs {
+  padding: 1rem 15px; /* 1rem top/bottom, 15px left/right */
+  box-sizing: border-box;
+  width: 100%;
+  position: relative; /* To ensure it's above hero-bg but respects hero-overlay if applicable */
+  z-index: 2; /* To be above hero-overlay which is z-index 1 */
 }
+
 h1, h2, h3 {
   margin-top: 0;
   margin-bottom: 20px;
@@ -461,6 +471,26 @@ footer a:hover {
 
 .highlight:hover::after {
   transform: scaleX(1);
+}
+
+@media (max-width: 786px) {
+  ul.breadcrumb li+li:before {
+    padding: 4px; /* Reduced from 8px */
+  }
+
+  ul.breadcrumb li {
+    font-size: 16px; /* Reduced from 18px */
+  }
+
+  ul.breadcrumb {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  ul.breadcrumb {
+    padding: 0;
+  }
 }
 
 @media (min-width: 768px) {
