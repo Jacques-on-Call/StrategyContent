@@ -67,6 +67,16 @@ header {
   z-index: var(--z-index-header);
 }
 
+.progress-bar {
+  position: fixed;
+  top: 60px; /* Positioned at the bottom of the 60px header */
+  left: 0;
+  width: 100%; /* Full width of the viewport */
+  height: 4px;   /* A common height for progress bars */
+  background-color: var(--light-green); /* Changed from var(--light-grey) */
+  z-index: var(--z-index-header); /* Same z-index as header */
+}
+
 .logo {
   height: 60px;
   cursor: pointer;
@@ -178,7 +188,9 @@ img {
 ul.breadcrumb {
   list-style: none;
 	margin-top: 0;
+	margin-left: 0 !important;
 	padding: 0;
+	padding-inline-start: 0 !important;
 }
 ul.breadcrumb li {
   display: inline;
@@ -231,11 +243,12 @@ ul.breadcrumb li a:hover {
 
 .hero-banner {
   position: relative;
-  height: 60vh;
+  height: 520px;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
 }
 
@@ -286,6 +299,41 @@ ul.breadcrumb li a:hover {
   width: 100%;
   position: relative; /* To ensure it's above hero-bg but respects hero-overlay if applicable */
   z-index: 2; /* To be above hero-overlay which is z-index 1 */
+  text-align: left;
+}
+
+.hero-banner .hero-content.container {
+  background-color: transparent !important;
+}
+
+/* Styles for Reading Time and Info Box in Hero Content */
+.hero-content .info {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if items don't fit */
+  align-items: center;
+  justify-content: center; /* Center items if they wrap or don't fill width */
+  gap: 0.75rem; /* Space between reading time and tags, and if tags wrap */
+  margin-top: 1rem; /* Space above the info box */
+  margin-bottom: 1rem; /* Space below the info box */
+}
+
+.hero-content .reading-time {
+  font-size: 0.85em;
+  color: var(--white); /* Assuming white text like other hero content */
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle background */
+  padding: 0.3em 0.8em;
+  border-radius: 999px; /* Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  white-space: nowrap; /* Prevent text from wrapping within the pill */
+}
+
+/* Optional: Adjust category-tags if needed, though existing .tag style might be fine */
+/* The following rule for .category-tags is mostly for ensuring its behavior within the .info flex container */
+.hero-content .category-tags {
+  display: flex; /* Already styled by .tag-list, but good for explicitness in context if .tag-list is removed/changed */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 h1, h2, h3 {
@@ -471,6 +519,59 @@ footer a:hover {
 
 .highlight:hover::after {
   transform: scaleX(1);
+}
+
+/* FAQ Accordion Styles */
+.faq-item .faq-answer {
+  display: none; /* Hide answers by default */
+  padding: 15px;   /* Padding for the answer content */
+  border: 1px solid #eee; /* Optional border for answer */
+  border-top: none;      /* Avoid double border with question */
+  margin-bottom: 5px;  /* Space below each answer */
+}
+
+.faq-item.active .faq-answer {
+  display: block; /* Show answer when .faq-item is active */
+}
+
+.faq-question {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 15px;
+  background-color: var(--light-grey); /* Or your preferred question background */
+  border: 1px solid #ddd;
+  margin-top: 5px; /* Or remove if .faq-item has margin */
+  position: relative; /* For positioning an icon */
+  transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+  background-color: #e9e9e9; /* Slight hover effect */
+}
+
+/* Icon for expand/collapse */
+.faq-question::after {
+  content: '▼'; /* Collapsed state icon */
+  font-size: 1em;
+  color: var(--blue); /* Or your preferred icon color */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+  transform: translateY(-50%) rotate(180deg); /* Rotated for expanded state */
+}
+
+/* Styling for the main FAQ container */
+.faq-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-width: 750px; /* Optional: constrain width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 786px) {
