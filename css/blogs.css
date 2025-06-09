@@ -304,7 +304,7 @@
   z-index: 700; /* Same z-index as header */
 }
 
-/* ===== FAQ Accordion Styles - No Box, Just Lines ===== */
+/* ===== FAQ Accordion Styles - Final Refinement for Colors ===== */
 
 .faq-container {
   margin-top: 2rem;
@@ -316,25 +316,32 @@
 }
 
 .faq-item {
-  margin-bottom: 0; /* No space between items - borders will handle separation */
-  /* Remove box-shadow and border-radius from the item itself */
-  /* overflow: hidden; /* Keep overflow hidden just in case for internal elements */
+  margin-bottom: 12px; /* Space between each FAQ item for a card effect */
+  border-radius: 10px; /* Rounded corners for the entire item */
+  overflow: hidden; /* Ensures content and shadows are clipped to rounded corners */
+  background-color: var(--white); /* Explicitly set white background for the whole item */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for interaction */
 }
 
-/* Question Header Styling */
+.faq-item:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+/* Question Header Styling - Default (Inactive) State */
 .faq-question {
   cursor: pointer;
   font-weight: bold;
   padding: 18px 25px;
-  background-color: var(--white); /* White background for the question header */
+  background-color: var(--white); /* Inactive questions are white */
   color: var(--dark-grey); /* Dark grey text for readability */
-  border: none; /* Start with no general border */
-  border-bottom: 1px solid var(--light-grey); /* Line at the bottom when closed */
+  border: none; /* No internal borders */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  transition: background-color 0.2s ease, color 0.2s ease, border-bottom 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .faq-question:hover {
@@ -342,11 +349,11 @@
   color: var(--blue); /* Change text color on hover for emphasis */
 }
 
-/* Icon for expand/collapse */
+/* Icon for expand/collapse - Default (Inactive) State */
 .faq-question::after {
   content: '▼'; /* Collapsed state icon */
   font-size: 0.9em;
-  color: var(--blue);
+  color: var(--blue); /* Icon color when inactive */
   margin-left: 15px;
   transform: rotate(0deg);
   transition: transform 0.3s ease;
@@ -354,17 +361,25 @@
 }
 
 /* When the FAQ item is active (open state) */
-.faq-item.active .faq-question {
-  background-color: var(--blue); /* Blue background when question is active/open */
-  color: var(--white); /* White text when open */
-  border-bottom: none; /* No border at the bottom of the question when open */
-  border-radius: 0; /* Ensure no residual rounding */
+.faq-item.active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Lighter shadow when open */
+  transform: translateY(0); /* Reset transform if it was lifted on hover */
 }
 
+/* Question Header Styling - Active State (Green as per your image) */
+.faq-item.active .faq-question {
+  background-color: var(--green); /* Active question header is green */
+  color: var(--white); /* White text when active */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* A subtle white border for separation when green */
+  border-bottom-left-radius: 0; /* Remove rounding at bottom when open */
+  border-bottom-right-radius: 0;
+}
+
+/* Icon for expand/collapse - Active State */
 .faq-item.active .faq-question::after {
   content: '▲'; /* Up arrow for expanded state */
   transform: rotate(0deg);
-  color: var(--white); /* White icon when open */
+  color: var(--white); /* White icon when active */
 }
 
 /* Answer Content Styling */
@@ -375,16 +390,9 @@
   color: var(--dark-grey); /* Dark grey text for the answer */
   font-size: 0.95em;
   line-height: 1.6;
-  border-bottom: 1px solid var(--light-grey); /* Line at the bottom of the answer */
-  /* Remove inset shadow */
-  /* border-top: 1px dashed var(--light-grey); /* Remove dashed line for a cleaner look */
+  border-top: 1px solid var(--light-grey); /* A subtle line separating the question from the answer */
 }
 
 .faq-item.active .faq-answer {
   display: block; /* Show answer when .faq-item is active */
-}
-
-/* Optional: Add a top border to the first FAQ item if you want a line above it */
-.faq-item:first-child .faq-question {
-    border-top: 1px solid var(--light-grey);
 }
