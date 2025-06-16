@@ -1,302 +1,5 @@
 /* ===== MAIN QUIZ CONTAINER ===== */
 .quiz-container {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6; /* Light neutral background */
-  color: #333;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* ===== HEADINGS & TEXT ===== */
-.quiz-container h1, .quiz-container h2, .quiz-container h3, .quiz-container h4 {
-  color: #2c3e50; /* Darker, sophisticated blue-grey */
-  margin-bottom: 15px;
-}
-.quiz-container h1 { font-size: 2.2em; text-align: center; }
-.quiz-container h2 { font-size: 1.8em; border-bottom: 2px solid #3498db; padding-bottom: 10px; } /* Blue accent */
-.quiz-container h3 { font-size: 1.4em; color: #3498db; } /* Blue accent for question text */
-.quiz-container p {
-  line-height: 1.6;
-  margin-bottom: 10px;
-  color: #555; /* Slightly lighter text for paragraphs */
-}
-.context-text, .relevance-text, .next-steps-text {
-  font-size: 0.95em;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-left: 3px solid #7f8c8d; /* Muted grey-blue border */
-  background-color: #ecf0f1; /* Very light grey background */
-  border-radius: 4px;
-}
-.relevance-text strong { color: #c0392b; } /* Emphasizing relevance */
-.next-steps-text strong { color: #27ae60; } /* Emphasizing next steps */
-
-/* ===== BUTTONS ===== */
-.quiz-button, button { /* General button style */
-  background-color: #3498db; /* Primary blue */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  margin-top: 10px;
-  margin-right: 5px;
-}
-.quiz-button:hover, button:hover {
-  background-color: #2980b9; /* Darker blue on hover */
-}
-.quiz-button:active, button:active {
-  transform: translateY(1px);
-}
-.quiz-button:disabled, button:disabled {
-  background-color: #bdc3c7; /* Light grey for disabled */
-  cursor: not-allowed;
-}
-
-/* Specific button IDs if needed, but class-based is preferred */
-#start-button, #next-button, #submit-button, .cta-button {
-  font-size: 1.1em;
-  padding: 15px 25px;
-  background-color: #2ecc71; /* Green for CTAs */
-}
-#start-button:hover, #next-button:hover, #submit-button:hover, .cta-button:hover {
-  background-color: #27ae60; /* Darker green */
-}
-
-/* Option buttons for multiple choice */
-.quiz-option-btn {
-  display: block;
-  width: 100%;
-  background-color: #fff;
-  color: #3498db; /* Blue text */
-  border: 2px solid #3498db; /* Blue border */
-  padding: 15px;
-  margin-bottom: 10px;
-  text-align: left;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-.quiz-option-btn:hover {
-  background-color: #eaf5ff; /* Light blue tint on hover */
-  color: #2980b9;
-}
-.quiz-option-btn.selected {
-  background-color: #3498db; /* Solid blue when selected */
-  color: white;
-  border-color: #2980b9; /* Darker blue border for selected */
-}
-
-/* ===== INPUTS & CONTROLS ===== */
-/* Sliders */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 10px;
-  background: #ddd; /* Slider track */
-  border-radius: 5px;
-  outline: none;
-  margin: 15px 0;
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #3498db; /* Blue thumb */
-  border-radius: 50%;
-  cursor: pointer;
-}
-input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #3498db; /* Blue thumb */
-  border-radius: 50%;
-  cursor: pointer;
-  border: none; /* Important for Firefox */
-}
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* Select Dropdowns (for Grid and Ranking) */
-select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
-  background-color: white;
-  width: 100%; /* Make selects take full width of their container */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  margin-bottom: 10px; /* Spacing for multiple selects */
-}
-select:focus {
-  border-color: #3498db;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-/* Grid Table (for Component 3 - ProfessionalPresenceAudit) */
-.grid-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.grid-table th, .grid-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-.grid-table th {
-  background-color: #ecf0f1; /* Light grey for table headers */
-  color: #2c3e50;
-  font-weight: bold;
-}
-
-/* Radio buttons (for Component 4 - AuthenticityIntegrityCheck) */
-.radio-option-label {
-  display: block;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-.radio-option-label:hover {
-  border-color: #3498db;
-}
-.radio-option-label.selected { /* Hypothetical class if we add it for styling selected radio wrapper */
-  border-color: #2980b9;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
-.radio-option-label input[type="radio"] {
-  margin-right: 10px;
-  accent-color: #3498db; /* Modern way to color radio button itself */
-}
-
-
-/* ===== RESULTS DISPLAY ===== */
-.results-container {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-  text-align: center;
-}
-.results-container h2 {
-  color: #27ae60; /* Green for results heading */
-}
-.results-summary p {
-  font-size: 1.1em;
-  margin-bottom: 20px;
-}
-.profile-badge {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border-radius: 20px;
-  font-size: 1.2em;
-  margin: 20px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
-  margin-top: 20px;
-}
-.card {
-  background-color: #ecf0f1; /* Light grey for cards */
-  border: 1px solid #d2d7d9;
-  padding: 20px;
-  border-radius: 6px;
-  width: calc(50% - 20px); /* Two cards per row, accounting for gap */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.card h4 {
-  color: #2c3e50;
-  margin-top: 0;
-}
-
-/* ===== MISC & UTILITIES ===== */
-.error-message {
-  color: #e74c3c; /* Red for errors */
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.loading-message {
-  text-align: center;
-  font-size: 1.2em;
-  color: #7f8c8d;
-  padding: 30px;
-}
-
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-  .quiz-container {
-    margin: 10px;
-    padding: 15px;
-  }
-  .quiz-container h1 { font-size: 1.8em; }
-  .quiz-container h2 { font-size: 1.5em; }
-  .quiz-container h3 { font-size: 1.2em; }
-
-  .quiz-button, button {
-    padding: 10px 15px;
-    font-size: 0.95em;
-  }
-  #start-button, #next-button, #submit-button, .cta-button {
-    padding: 12px 20px;
-  }
-  .quiz-option-btn {
-    padding: 12px;
-  }
-  .card {
-    width: 100%; /* Stack cards on smaller screens */
-  }
-}
-
-/* ===== ANIMATIONS (Optional) ===== */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.component-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Styling for OptInHook specific elements if needed */
-.opt-in-hook-container { /* Assuming QuizContainer.js wraps OptInHook in a div with this class if specific styling is needed outside global h1/p */
-  text-align: center;
-  padding: 20px;
-}
-.opt-in-hook-container h1 {
-  font-size: 1.8em; /* Example: slightly smaller than main quiz H1 */
-  color: #333;
-}
-.opt-in-hook-container p {
-  font-size: 1.1em;
-  margin: 20px 0 30px 0; /* More bottom margin before button */
-}
-.opt-in-hook-container button {
-  /* Uses .cta-button styles or general button styles by default */
-}
-```
-
-/* ===== MAIN QUIZ CONTAINER ===== */
-.quiz-container {
     max-width: 600px;
     margin: 20px auto;
     background-color: var(--green);
@@ -678,5 +381,562 @@ select:focus {
 
     .spectrum-bar {
         margin: 0 0 8px 0;
+    }
+}
+/* === Digital Impact Compass Specific Overrides/Additions to quiz.css === */
+/* These styles are specifically for the "Compass" app, adapting to quiz.css's existing structure */
+
+/* Main Compass App Container - Uses quiz-container as base but allows slight overrides */
+/* Ensure your main .quiz-container rules are defined BEFORE this, or merge strategically. */
+#app-container.quiz-container {
+    max-width: var(--content-max-width, 900px); /* Align with blog content width, fallback for safety */
+    margin: 30px auto; /* More vertical margin for blog embedding */
+    padding: 30px;
+    background-color: var(--white); /* White background for the app content area */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Keep distinct app shadow */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    color: var(--dark-grey); /* Ensure default text color for app content */
+}
+
+/* Compass Screen Visibility Rules */
+.app-screen {
+    display: none; /* All screens are hidden by default */
+    padding: 0; /* Padding moved to inner elements for better control */
+}
+
+.app-screen.active {
+    display: block; /* The active screen is visible */
+    animation: fadeIn 0.5s ease-out; /* Smooth fade-in transition */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Opt-In Screen specific text alignment */
+#opt-in-screen h2,
+#opt-in-screen p {
+    text-align: center;
+}
+
+/* Question sections - now utilize the 'question' class, which might already be styled in quiz.css */
+/* These ensure consistent appearance even if 'question' is styled differently for other quizzes */
+.question {
+    background-color: var(--white); /* White background for readability */
+    color: var(--black); /* Black text */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px; /* Spacing between questions */
+}
+
+.question h3,
+.question h4,
+.question p {
+    color: var(--black); /* Ensure text is black within questions */
+}
+
+/* Headings for compass app */
+#app-container h2 { /* Targeting h2 specifically within the compass app container */
+    color: var(--blue); /* Primary blue for main titles */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+#app-container h3 { /* Targeting h3 specifically within the compass app container */
+    color: var(--dark-grey); /* Dark grey for question titles */
+    margin-bottom: 25px;
+    font-size: 1.3em;
+}
+
+/* Input Fields (Radio & Checkbox) - Styled to look like quiz-option-btn */
+/* This styling applies to the .input-group DIV that wraps each input and label */
+.input-group {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 15px; /* Match quiz-option-btn padding */
+    margin: 10px 0; /* Match quiz-option-btn margin */
+    border: 2px solid var(--blue); /* Blue border like quiz-option-btn */
+    border-radius: 5px; /* Match quiz-option-btn border-radius */
+    transition: all 0.2s ease;
+    background: var(--white);
+    color: var(--black); /* Default text color */
+}
+
+.input-group:hover {
+    background-color: var(--light-grey);
+    border-color: var(--blue);
+    color: var(--black);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.2); /* Make the radio/checkbox slightly larger */
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent input from shrinking */
+}
+
+.input-group label {
+    flex-grow: 1; /* Label takes remaining space */
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--dark-grey); /* Default label text color */
+}
+
+/* Style for selected radio/checkbox items */
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+    font-weight: bold;
+    color: var(--white); /* White text when selected */
+}
+
+/* Apply selected styles to the parent .input-group when its child input is checked */
+.input-group:has(input[type="radio"]:checked),
+.input-group:has(input[type="checkbox"]:checked) {
+    background-color: var(--blue); /* Blue background for selected option */
+    border-color: var(--blue);
+    color: var(--white); /* White text for selected option */
+}
+
+
+/* Buttons - Harmonized with existing quiz.css button styles */
+/* Target buttons specifically within the compass app container to avoid global conflicts */
+#app-container button {
+    background-color: var(--blue); /* Default primary button color */
+    color: var(--white);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    display: inline-block;
+    width: 100%; /* Default to full width for consistency in single button scenarios */
+}
+
+#app-container button:hover {
+    background-color: #002147; /* Darker blue on hover */
+}
+
+/* Specific compass buttons for distinct colors */
+#start-compass-btn {
+    background-color: var(--blue);
+}
+#start-compass-btn:hover {
+    background-color: #002147;
+}
+
+.next-btn {
+    background-color: var(--scarlet); /* Use scarlet for next buttons */
+}
+.next-btn:hover {
+    background-color: var(--dark-scarlet);
+}
+
+.back-btn {
+    background-color: var(--grey); /* Grey for back button */
+}
+.back-btn:hover {
+    background-color: var(--dark-grey);
+}
+
+#generate-compass-btn {
+    background-color: var(--scarlet); /* Use scarlet for the final action button */
+}
+#generate-compass-btn:hover {
+    background-color: var(--dark-scarlet);
+}
+
+/* Button Group for Next/Back buttons - specific to compass app */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Space between buttons */
+    margin-top: 30px;
+}
+
+.button-group button {
+    width: auto; /* Allow buttons in a group to size naturally */
+    flex-grow: 1; /* Distribute space evenly if needed */
+}
+
+/* Results Screen Specifics - Uses .results-container and .card */
+/* This section styles the dynamic content of the blueprint */
+#results-container #blueprint-content {
+    background-color: transparent; /* Let the card background show through */
+    padding: 0; /* Remove extra padding since it's now wrapped in a card */
+    min-height: auto; /* Let content define height */
+    overflow-y: visible; /* Prevent scrollbar unless card itself needs it */
+    border: none; /* No border here, card provides it */
+}
+
+/* General .card styling should already be in your quiz.css, but ensure it applies to these dynamic cards */
+.blueprint-summary.card,
+.recommendation-card.card {
+    background: var(--white);
+    color: var(--black); /* Text color inside cards */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--light-grey);
+    margin-bottom: 15px;
+    margin-top: 15px; /* Add some spacing between cards */
+}
+
+.recommendation-card h5 {
+    color: var(--blue); /* Blue heading for recommendation titles */
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-green); /* Green underline */
+    padding-bottom: 8px;
+}
+
+.recommendation-card h6,
+.recommendation-card p,
+.recommendation-card ul,
+.recommendation-card li {
+    color: var(--black); /* Ensure text is black within recommendation cards */
+}
+
+.recommendation-card .rec-priority {
+    background-color: var(--green);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.recommendation-card .rec-pro-tip {
+    font-style: italic;
+    font-size: 0.9em;
+    color: var(--grey);
+    border-top: 1px dashed var(--light-grey);
+    padding-top: 10px;
+    margin-top: 15px;
+}
+
+/* Responsive adjustments specific to compass app */
+@media (max-width: 768px) {
+    #app-container.quiz-container {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    #app-container.quiz-container {
+        padding: 20px;
+    }
+    #app-container h2 {
+        font-size: 1.5em;
+    }
+    #app-container h3 {
+        font-size: 1.1em;
+    }
+    #app-container button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 10px;
+    }
+    .input-group {
+        padding: 8px 12px;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 8px;
+    }
+    .input-group label {
+        font-size: 1em;
+    }
+}
+
+.context-text {
+    background-color: var(--light-green); 
+    border-left: 4px solid var(--light-green); 
+    padding: 18px 20px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--dark-grey); /* Keep the text dark for readability on light green */
+}
+
+.context-text p {
+    margin: 0;
+}
+
+.quiz-wrapper {
+    max-width: var(--content-max-width); /* Align with your blog's content width */
+    margin: 40px auto; /* Center the quiz horizontally, provide vertical spacing */
+    padding: 25px;
+    background-color: var(--white); /* Use your white variable */
+    border-radius: 8px; /* Maintain subtle rounded corners */
+    border: 1px solid var(--light-grey); /* Subtle border using light-grey */
+    font-family: var(--font-family); /* Use your defined font family */
+    color: var(--dark-grey); /* Use your dark-grey for main text */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Added a very light, subtle shadow back for depth */
+}
+
+#app-container {
+    padding: 0; /* Ensures no extra padding within the container */
+}
+
+/* Context Text Styling */
+.context-text {
+    background-color: var(--light-grey); /* Use your light-grey for context background */
+    border-left: 4px solid var(--blue); /* Blue left border for emphasis */
+    padding: 18px 20px; /* Increased padding */
+    margin-bottom: 25px; /* More space below context */
+    border-radius: 4px;
+    font-size: 1em; /* Slightly larger font for context text */
+    line-height: 1.6; /* Improved line height for readability */
+    color: var(--grey); /* Use your grey for context text */
+}
+
+.context-text p {
+    margin: 0;
+}
+
+/* General app-screen improvements */
+.app-screen {
+    padding: 0px;
+    text-align: left;
+}
+
+.app-screen h2,
+.app-screen h3 {
+    color: var(--blue); /* Use your blue for headings */
+    margin-bottom: 30px; /* More space below headings */
+    font-size: 2em; /* Slightly larger H2 for impact */
+    font-weight: 700;
+    text-align: center;
+}
+
+.app-screen h3 {
+    font-size: 1.6em; /* Slightly larger H3 */
+    margin-bottom: 25px; /* More space below H3 */
+}
+
+.app-screen p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Input group styling for better spacing and alignment */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px; /* Reduced space between options for compactness */
+    padding: 14px 18px; /* Generous padding for clickable area */
+    border: 1px solid var(--light-grey);
+    border-radius: 8px; /* Slightly more rounded corners for softness */
+    transition: all 0.3s ease-in-out; /* Smoother transition */
+    cursor: pointer;
+    background-color: var(--white);
+    position: relative; /* Needed for potential future checkmark/dot animation */
+    overflow: hidden; /* Ensure content doesn't spill out */
+}
+
+.input-group:hover {
+    background-color: #f7f9fc; /* A very subtle off-white for hover */
+    border-color: var(--blue); /* Blue border on hover */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* More pronounced shadow on hover for engagement */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.input-group input[type="radio"],
+.input-group input[type="checkbox"] {
+    margin-right: 15px; /* Space between input and label */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px; /* Slightly larger inputs */
+    height: 22px; /* Slightly larger inputs */
+    border: 2px solid var(--grey); /* Use your grey for initial border */
+    border-radius: 50%; /* For radio buttons */
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0; /* Prevent input from shrinking */
+    transition: border-color 0.2s ease;
+}
+
+.input-group input[type="checkbox"] {
+    border-radius: 6px; /* For checkboxes, less rounded than radio */
+}
+
+.input-group input[type="radio"]:checked,
+.input-group input[type="checkbox"]:checked {
+    border-color: var(--blue); /* Blue border when checked */
+}
+
+
+.input-group input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 14px; /* Larger inner dot */
+    height: 14px; /* Larger inner dot */
+    background-color: var(--blue); /* Blue for checked state */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s ease;
+}
+
+.input-group input[type="checkbox"]:checked::before {
+    content: '✔';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue); /* Blue for checked state */
+    color: var(--white); /* White checkmark */
+    text-align: center;
+    line-height: 22px; /* Match height of checkbox for vertical centering */
+    font-size: 14px;
+    border-radius: 5px; /* Match checkbox border-radius - 1px */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.input-group label {
+    flex-grow: 1; /* Allow label to take up available space */
+    text-align: left;
+    cursor: pointer;
+    font-weight: 500; /* Slightly bolder text for options */
+    color: var(--dark-grey); /* Darker text for options for contrast */
+    font-size: 1.1em; /* Slightly larger font for readability */
+    white-space: nowrap; /* Attempt to keep text on a single line */
+    overflow: hidden; /* Hide overflow if text is too long */
+    text-overflow: ellipsis; /* Add ellipsis if text is cut off */
+    line-height: 1.3; /* Ensure consistent line height */
+    padding-top: 2px; /* Minor vertical alignment adjustment */
+    padding-bottom: 2px;
+}
+
+/* If label text is too long and must wrap, allow it gracefully */
+@media (max-width: 480px) {
+    .input-group label {
+        white-space: normal; /* Allow text to wrap on smaller screens */
+        text-overflow: clip; /* No ellipsis if wrapping */
+    }
+}
+
+
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px; /* More space above buttons */
+    gap: 15px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 14px 25px; /* Larger buttons for easier tapping */
+    font-size: 1.15em; /* Slightly larger font */
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+/* Primary buttons */
+#start-compass-btn,
+.next-btn,
+#generate-compass-btn {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+#start-compass-btn:hover,
+.next-btn:hover,
+#generate-compass-btn:hover {
+    background-color: #002b55; /* A slightly darker blue on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* Back button */
+.back-btn, #start-over-btn {
+    background-color: var(--light-grey);
+    color: var(--grey);
+    border: 1px solid var(--grey);
+}
+
+.back-btn:hover, #start-over-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Hide screens */
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .quiz-wrapper {
+        margin: 20px 0; /* Remove horizontal margin, allow it to stretch for full width on mobile */
+        padding: 15px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .app-screen h2 {
+        font-size: 1.8em; /* Adjusted for smaller screens */
+    }
+
+    .app-screen h3 {
+        font-size: 1.4em; /* Adjusted for smaller screens */
+    }
+
+    .input-group {
+        flex-direction: row; /* Keep options horizontal if possible on mobile too */
+        justify-content: flex-start; /* Align content to the left */
+        align-items: center; /* Keep items vertically centered */
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    
+    .input-group input {
+        margin-right: 12px; /* Maintain space */
+        margin-bottom: 0; /* No vertical margin for inputs */
+    }
+
+    .input-group label {
+        padding-right: 0;
+        white-space: normal; /* Allow text to wrap on smaller screens */
+        text-overflow: clip; /* No ellipsis if wrapping */
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        margin-bottom: 10px;
+        width: 100%;
     }
 }
