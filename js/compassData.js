@@ -1,124 +1,150 @@
 // js/compassData.js
 
+const TOOLS_CATALOG = {
+    "google_search_console": { name: "Google Search Console", cost: "Free", learning_curve: "Medium" },
+    "google_keyword_planner": { name: "Google Keyword Planner", cost: "Free", learning_curve: "Medium" },
+    "google_analytics": { name: "Google Analytics", cost: "Free", learning_curve: "High" },
+    "semrush_seo": { name: "SEMrush (SEO & Content)", cost: "High (approx. R2000+/month)", learning_curve: "High" },
+    "ahrefs_seo": { name: "Ahrefs (SEO Platform)", cost: "High (approx. R2000+/month)", learning_curve: "High" },
+    "buffer_social": { name: "Buffer (Social Media Management)", cost: "Free / Low (Premium Option)", learning_curve: "Low" }, // Example: "Free / Low (approx. R100-R500/month)"
+    "hotjar_analytics": { name: "Hotjar (Analytics & Feedback)", cost: "Free / Medium (Premium Option)", learning_curve: "Medium" }, // Example: "Free / Medium (approx. R500-R2000/month)"
+    "grammarly_writing": { name: "Grammarly (Writing Assistant)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
+    "yoast_seo_wordpress": { name: "Yoast SEO (WordPress Plugin)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
+    "rank_math_wordpress": { name: "Rank Math SEO (WordPress Plugin)", cost: "Free / Low (Premium Option)", learning_curve: "Medium" },
+    "screaming_frog_seo": { name: "Screaming Frog SEO Spider", cost: "Free / Medium (Premium Option)", learning_curve: "High" }, // Cost for paid version
+    "canva_design": { name: "Canva (Graphic Design)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
+    "linkedin_analytics": { name: "LinkedIn Analytics", cost: "Free", learning_curve: "Medium" }, // Built-in
+    "mailchimp_email": { name: "Mailchimp (Email Marketing)", cost: "Free / Medium (Premium Option)", learning_curve: "Medium" },
+    "answer_the_public": { name: "AnswerThePublic (Keyword Ideas)", cost: "Free / Low (Premium Option)", learning_curve: "Low"},
+    "brightlocal_local_seo": { name: "BrightLocal (Local SEO)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "whitespark_local_seo": { name: "Whitespark (Local SEO Tools)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "moz_local": { name: "Moz Local (Local SEO Management)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "google_structured_data_helper": { name: "Google Structured Data Markup Helper", cost: "Free", learning_curve: "Medium"},
+    "schema_org": { name: "Schema.org (Documentation)", cost: "Free", learning_curve: "High"}, // For learning
+    "surfer_seo": { name: "SurferSEO (Content Optimization)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "marketmuse_content_strategy": { name: "MarketMuse (AI Content Planning)", cost: "High (approx. R2000+/month)", learning_curve: "High"},
+    "google_trends": { name: "Google Trends", cost: "Free", learning_curve: "Low"},
+    "ubersuggest_seo": { name: "Ubersuggest (SEO Tool)", cost: "Free / Low (Premium Option)", learning_curve: "Medium"},
+    "google_nlp_api": { name: "Google Cloud Natural Language API", cost: "Medium (Usage-based)", learning_curve: "High"},
+    "textrazor_nlp": { name: "TextRazor (NLP API)", cost: "Free / Medium (Premium Option)", learning_curve: "High"},
+    "wordlift_semantic_seo": { name: "WordLift (AI Semantic SEO)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "High"},
+    "frase_io_content_optimization": { name: "Frase.io (AI Content Optimization)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "hootsuite_social": { name: "Hootsuite (Social Media Management)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "google_alerts": { name: "Google Alerts", cost: "Free", learning_curve: "Low" }
+};
+
 const SEO_TYPES_DATA = [
     {
         id: "featured_snippet_seo",
         name: "Featured Snippet SEO",
         description: "Optimizing content to appear as the direct answer box (featured snippet) on Search Engine Results Pages (SERPs). This often involves structuring content with clear questions and concise answers, lists, or tables.",
-        base_effort_hours_per_month_low: 4,
-        base_effort_hours_per_month_medium: 8,
-        base_effort_hours_per_month_high: 15,
-        skill_required: "Intermediate", // Requires understanding of on-page SEO and content structure
+        estimated_effort_hours_per_month: { diy: "5-10 hours", tool_assisted: "3-7 hours" },
+        skill_required: "Intermediate",
         primary_benefits: ["Trust & Authority", "Brand Awareness", "Thought Leadership"],
-        relevance_startup: "Medium", // Can be a quick win if content is good
+        relevance_startup: "Medium",
         relevance_growth: "High",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Highly valuable for informational queries
-        dependencies: ["content_seo"], // Depends on having quality content
-        tools_recommended: ["Google Search Console", "Ahrefs", "SEMrush", "AnswerThePublic"],
-        zero_click_impact: "High" // Directly aims for zero-click visibility
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
+        dependencies: ["content_seo"],
+        tools_recommended: ["google_search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
+        recommended_tool_ids: ["google_search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
+        zero_click_impact: "High"
     },
     {
         id: "local_seo",
         name: "Local SEO",
         description: "Optimizing your online presence to attract more business from relevant local searches. This primarily involves Google Business Profile optimization, local citations, and managing online reviews.",
-        base_effort_hours_per_month_low: 5,
-        base_effort_hours_per_month_medium: 10,
-        base_effort_hours_per_month_high: 20,
-        skill_required: "Beginner", // Basic setup is accessible
+        estimated_effort_hours_per_month: { diy: "6-12 hours", tool_assisted: "3-7 hours" },
+        skill_required: "Beginner",
         primary_benefits: ["Attract New Clients/Leads", "Brand Awareness", "Customer Engagement"],
         relevance_startup: "High",
         relevance_growth: "High",
-        relevance_scale: "Medium", // Still important but may have broader reach too
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Essential for local practices
+        relevance_scale: "Medium",
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: [],
-        tools_recommended: ["Google Business Profile", "BrightLocal", "Whitespark", "Moz Local"],
-        zero_click_impact: "High" // GBP listings are prominent zero-click results
+        tools_recommended: ["Google Business Profile", "BrightLocal", "Whitespark", "Moz Local"], // Kept old for reference, new one below
+        recommended_tool_ids: ["google_search_console", "brightlocal_local_seo", "whitespark_local_seo", "moz_local"], // Assuming Google Business Profile is managed via Search Console or implicitly
+        zero_click_impact: "High"
     },
     {
         id: "schema_markup_seo",
         name: "Schema Markup SEO (Structured Data)",
         description: "Adding specific code (schema markup) to your website to help search engines understand the context of your content better, leading to rich snippets and enhanced visibility in SERPs.",
-        base_effort_hours_per_month_low: 3, // For basic implementation on key pages
-        base_effort_hours_per_month_medium: 6,
-        base_effort_hours_per_month_high: 12,
-        skill_required: "Intermediate", // Can be technical
+        estimated_effort_hours_per_month: { diy: "4-8 hours", tool_assisted: "2-5 hours" },
+        skill_required: "Intermediate",
         primary_benefits: ["Enhanced SERP Visibility", "Trust & Authority", "Improved Click-Through Rates"],
         relevance_startup: "Medium",
         relevance_growth: "High",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "High", "legal": "Medium", "financial": "Medium" }, // Very useful for articles, FAQs, local business info
+        industry_priority: { "healthcare": "High", "legal": "Medium", "financial": "Medium" },
         dependencies: [],
         tools_recommended: ["Google Structured Data Markup Helper", "Schema.org", "RankRanger Schema Markup Generator"],
-        zero_click_impact: "Medium" // Contributes to rich snippets which can be zero-click
+        recommended_tool_ids: ["google_structured_data_helper", "schema_org", "rank_math_wordpress", "yoast_seo_wordpress"],
+        zero_click_impact: "Medium"
     },
     {
         id: "content_seo",
         name: "Content SEO",
         description: "Creating and optimizing high-quality, relevant content that answers user queries and targets specific keywords. This forms the foundation for many other SEO activities.",
-        base_effort_hours_per_month_low: 10, // Assuming 1-2 pieces of content
-        base_effort_hours_per_month_medium: 20,
-        base_effort_hours_per_month_high: 40,
-        skill_required: "Beginner", // Basic optimization is learnable
+        estimated_effort_hours_per_month: { diy: "12-25 hours", tool_assisted: "8-18 hours" }, // Higher base effort
+        skill_required: "Beginner",
         primary_benefits: ["Attract New Clients/Leads", "Trust & Authority", "Brand Awareness", "Thought Leadership"],
         relevance_startup: "High",
         relevance_growth: "High",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Universally important
-        dependencies: [], // Foundational
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
+        dependencies: [],
         tools_recommended: ["Google Keyword Planner", "SurferSEO", "MarketMuse", "Grammarly"],
-        zero_click_impact: "Medium" // Good content can rank in snippets or provide direct answers
+        recommended_tool_ids: ["google_keyword_planner", "semrush_seo", "grammarly_writing", "surfer_seo"],
+        zero_click_impact: "Medium"
     },
     {
         id: "voice_search_seo",
         name: "Voice Search SEO",
         description: "Optimizing content and website structure to be found through voice assistants like Siri, Alexa, and Google Assistant. Often involves focusing on conversational keywords and FAQ-style content.",
-        base_effort_hours_per_month_low: 2,
-        base_effort_hours_per_month_medium: 5,
-        base_effort_hours_per_month_high: 10,
+        estimated_effort_hours_per_month: { diy: "3-6 hours", tool_assisted: "2-4 hours" },
         skill_required: "Intermediate",
         primary_benefits: ["Attract New Clients/Leads", "Brand Awareness", "Accessibility"],
         relevance_startup: "Medium",
         relevance_growth: "Medium",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "Medium", "legal": "Medium", "financial": "Low" }, // More relevant for quick info queries
+        industry_priority: { "healthcare": "Medium", "legal": "Medium", "financial": "Low" },
         dependencies: ["content_seo", "local_seo", "featured_snippet_seo"],
         tools_recommended: ["AnswerThePublic", "Google Trends", "UberSuggest"],
-        zero_click_impact: "High" // Voice answers are often direct and zero-click
+        recommended_tool_ids: ["answer_the_public", "google_trends", "ubersuggest_seo"],
+        zero_click_impact: "High"
     },
     {
         id: "semantic_seo",
         name: "Semantic SEO",
         description: "Focusing on the meaning and intent behind search queries, rather than just keywords. Involves creating comprehensive content around topics and entities, and building relationships between them.",
-        base_effort_hours_per_month_low: 5,
-        base_effort_hours_per_month_medium: 10,
-        base_effort_hours_per_month_high: 18,
-        skill_required: "Advanced", // Requires deeper SEO understanding
+        estimated_effort_hours_per_month: { diy: "6-12 hours", tool_assisted: "4-9 hours" },
+        skill_required: "Advanced",
         primary_benefits: ["Trust & Authority", "Thought Leadership", "Improved Rankings for Broad Topics"],
         relevance_startup: "Low",
         relevance_growth: "Medium",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Important for complex topics
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: ["content_seo"],
         tools_recommended: ["Google NLP API", "TextRazor", "WordLift", "Frase.io"],
-        zero_click_impact: "Medium" // Contributes to overall content quality that can win snippets
+        recommended_tool_ids: ["google_nlp_api", "textrazor_nlp", "wordlift_semantic_seo", "frase_io_content_optimization"],
+        zero_click_impact: "Medium"
     },
     {
         id: "user_intent_seo",
         name: "User Intent SEO",
         description: "Aligning content with the user's primary goal when they perform a search (informational, navigational, transactional, commercial). This is crucial for satisfying users and ranking well.",
-        base_effort_hours_per_month_low: 3, // Analysis and tweaking existing content
-        base_effort_hours_per_month_medium: 7,
-        base_effort_hours_per_month_high: 14,
+        estimated_effort_hours_per_month: { diy: "4-8 hours", tool_assisted: "2-5 hours" }, // Primarily analysis
         skill_required: "Intermediate",
         primary_benefits: ["Attract New Clients/Leads", "Improved Conversion Rates", "Reduced Bounce Rates"],
         relevance_startup: "High",
         relevance_growth: "High",
         relevance_scale: "High",
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Fundamental to effective SEO
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: ["content_seo"],
         tools_recommended: ["Google Search Results Analysis", "Ahrefs Content Explorer", "User Surveys/Feedback"],
-        zero_click_impact: "Low" // More about ranking the right content than direct zero-click features
+        recommended_tool_ids: ["google_search_console", "hotjar_analytics", "ahrefs_seo"],
+        zero_click_impact: "Low"
     }
 ];
 
@@ -127,31 +153,34 @@ const MEDIA_TYPES_DATA = [
         id: "blog_posts",
         name: "Blog Posts / Articles",
         description: "In-depth written content addressing specific user questions, topics, or keywords. Excellent for demonstrating expertise and driving organic traffic.",
-        base_effort_hours_per_post: 6, // Includes research, writing, basic optimization
-        skill_required: "Beginner", // Basic writing and SEO skills
+        estimated_effort_hours_per_item: { diy: "8-15 hours", tool_assisted: "5-10 hours" },
+        skill_required: "Beginner",
         primary_benefits: ["Trust & Authority", "Attract New Clients/Leads", "Thought Leadership"],
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
-        supports_seo_types: ["content_seo", "featured_snippet_seo", "semantic_seo", "user_intent_seo"] // IDs from SEO_TYPES_DATA
+        supports_seo_types: ["content_seo", "featured_snippet_seo", "semantic_seo", "user_intent_seo"],
+        recommended_tool_ids: ["grammarly_writing", "semrush_seo", "google_keyword_planner", "canva_design"]
     },
     {
         id: "short_videos",
         name: "Short Explainer Videos (e.g., for Social Media, FAQs)",
         description: "Concise video content (typically 1-3 minutes) explaining a concept, answering a question, or showcasing a service. Good for engagement.",
-        base_effort_hours_per_post: 8, // Includes scripting, simple recording, basic editing
-        skill_required: "Intermediate", // Basic video editing skills
+        estimated_effort_hours_per_item: { diy: "10-20 hours", tool_assisted: "6-12 hours" },
+        skill_required: "Intermediate",
         primary_benefits: ["Brand Awareness", "Customer Engagement", "Attract New Clients/Leads"],
         industry_priority: { "healthcare": "Medium", "legal": "Medium", "financial": "Medium" },
-        supports_seo_types: ["content_seo"] // Videos can be part of content strategy
+        supports_seo_types: ["content_seo"],
+        recommended_tool_ids: ["canva_design", "buffer_social"] // Simplified tools for creation/distribution
     },
     {
         id: "case_studies",
         name: "Case Studies / Success Stories",
         description: "Detailed analysis of a specific project, client success, or problem-solving scenario, demonstrating capabilities and results.",
-        base_effort_hours_per_post: 12, // Includes research, interviews, writing, design
+        estimated_effort_hours_per_item: { diy: "15-25 hours", tool_assisted: "10-18 hours" },
         skill_required: "Intermediate",
         primary_benefits: ["Trust & Authority", "Attract New Clients/Leads", "Social Proof"],
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Very effective for B2B or high-consideration services
-        supports_seo_types: ["content_seo"]
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
+        supports_seo_types: ["content_seo"],
+        recommended_tool_ids: ["grammarly_writing", "canva_design"] // Tools for writing and presentation
     }
 ];
 
@@ -160,31 +189,34 @@ const CHANNELS_DATA = [
         id: "linkedin",
         name: "LinkedIn",
         description: "Professional networking platform ideal for B2B engagement, thought leadership, and connecting with industry peers.",
-        base_effort_hours_per_month: 10, // For active posting, engagement, and networking
+        estimated_effort_hours_per_month: { diy: "12-20 hours", tool_assisted: "8-15 hours" },
         skill_required: "Intermediate",
         primary_benefits: ["Trust & Authority", "Attract New Clients/Leads", "Networking", "Thought Leadership"],
         industry_priority: { "healthcare": "Medium", "legal": "High", "financial": "High" },
-        best_for_media_types: ["blog_posts", "case_studies"] // IDs from MEDIA_TYPES_DATA
+        best_for_media_types: ["blog_posts", "case_studies"],
+        recommended_tool_ids: ["linkedin_analytics", "buffer_social", "semrush_seo"] // Semrush for content ideas for LinkedIn
     },
     {
         id: "professional_blog",
         name: "Own Professional Blog (on website)",
         description: "A dedicated section on your website for publishing articles, insights, and updates. Central to content SEO and establishing authority.",
-        base_effort_hours_per_month: 5, // Platform maintenance, strategy, promotion (effort for content creation is in MEDIA_TYPES_DATA)
-        skill_required: "Beginner", // Basic CMS skills
+        estimated_effort_hours_per_month: { diy: "6-10 hours", tool_assisted: "4-8 hours" }, // Effort for platform mgmt & promotion
+        skill_required: "Beginner",
         primary_benefits: ["Trust & Authority", "Attract New Clients/Leads", "Brand Awareness", "Thought Leadership"],
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
-        best_for_media_types: ["blog_posts", "case_studies"]
+        best_for_media_types: ["blog_posts", "case_studies"],
+        recommended_tool_ids: ["google_search_console", "google_analytics", "yoast_seo_wordpress", "rank_math_wordpress"]
     },
     {
         id: "google_business_profile",
         name: "Google Business Profile (GBP)",
         description: "Essential for local SEO, allowing businesses to manage their appearance on Google Search and Maps. Key for local client acquisition.",
-        base_effort_hours_per_month: 4, // Regular updates, Q&A, review management
+        estimated_effort_hours_per_month: { diy: "5-8 hours", tool_assisted: "3-6 hours" },
         skill_required: "Beginner",
         primary_benefits: ["Attract New Clients/Leads", "Local Visibility", "Customer Engagement"],
-        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" }, // Critical for local service providers
-        best_for_media_types: [] // Primarily a discovery channel, but can link to content
+        industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
+        best_for_media_types: [],
+        recommended_tool_ids: ["google_search_console", "brightlocal_local_seo", "whitespark_local_seo", "google_alerts"] // Alerts for brand mentions
     }
 ];
 
