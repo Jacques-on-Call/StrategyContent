@@ -1,35 +1,33 @@
-// js/compassData.js
-
 const TOOLS_CATALOG = {
-    "google_search_console": { name: "Google Search Console", cost: "Free", learning_curve: "Medium" },
+    "Google Search_console": { name: "Google Search Console", cost: "Free", learning_curve: "Medium" },
     "google_keyword_planner": { name: "Google Keyword Planner", cost: "Free", learning_curve: "Medium" },
     "google_analytics": { name: "Google Analytics", cost: "Free", learning_curve: "High" },
-    "semrush_seo": { name: "SEMrush (SEO & Content)", cost: "High (approx. R2000+/month)", learning_curve: "High" },
-    "ahrefs_seo": { name: "Ahrefs (SEO Platform)", cost: "High (approx. R2000+/month)", learning_curve: "High" },
-    "buffer_social": { name: "Buffer (Social Media Management)", cost: "Free / Low (Premium Option)", learning_curve: "Low" }, // Example: "Free / Low (approx. R100-R500/month)"
-    "hotjar_analytics": { name: "Hotjar (Analytics & Feedback)", cost: "Free / Medium (Premium Option)", learning_curve: "Medium" }, // Example: "Free / Medium (approx. R500-R2000/month)"
-    "grammarly_writing": { name: "Grammarly (Writing Assistant)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
-    "yoast_seo_wordpress": { name: "Yoast SEO (WordPress Plugin)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
-    "rank_math_wordpress": { name: "Rank Math SEO (WordPress Plugin)", cost: "Free / Low (Premium Option)", learning_curve: "Medium" },
-    "screaming_frog_seo": { name: "Screaming Frog SEO Spider", cost: "Free / Medium (Premium Option)", learning_curve: "High" }, // Cost for paid version
-    "canva_design": { name: "Canva (Graphic Design)", cost: "Free / Low (Premium Option)", learning_curve: "Low" },
+    "semrush_seo": { name: "SEMrush (SEO & Content)", cost: "High (approx. $100+/month)", learning_curve: "High" }, // R2000+ -> ~$100+
+    "ahrefs_seo": { name: "Ahrefs (SEO Platform)", cost: "High (approx. $100+/month)", learning_curve: "High" }, // R2000+ -> ~$100+
+    "buffer_social": { name: "Buffer (Social Media Management)", cost: "Free / Low (Premium option from ~$6/month)", learning_curve: "Low" }, // R100-R500 -> ~$6-30
+    "hotjar_analytics": { name: "Hotjar (Analytics & Feedback)", cost: "Free / Medium (Premium option from ~$39/month)", learning_curve: "Medium" }, // R500-R2000 -> ~$30-100
+    "grammarly_writing": { name: "Grammarly (Writing Assistant)", cost: "Free / Low (Premium option from ~$12/month)", learning_curve: "Low" },
+    "yoast_seo_wordpress": { name: "Yoast SEO (WordPress Plugin)", cost: "Free / Low (Premium option from ~$49/year)", learning_curve: "Low" },
+    "rank_math_wordpress": { name: "Rank Math SEO (WordPress Plugin)", cost: "Free / Low (Premium option from ~$59/year)", learning_curve: "Medium" },
+    "screaming_frog_seo": { name: "Screaming Frog SEO Spider", cost: "Free / Medium (Paid license ~$200/year)", learning_curve: "High" }, // Cost for paid version
+    "canva_design": { name: "Canva (Graphic Design)", cost: "Free / Low (Premium option from ~$12/month)", learning_curve: "Low" },
     "linkedin_analytics": { name: "LinkedIn Analytics", cost: "Free", learning_curve: "Medium" }, // Built-in
-    "mailchimp_email": { name: "Mailchimp (Email Marketing)", cost: "Free / Medium (Premium Option)", learning_curve: "Medium" },
-    "answer_the_public": { name: "AnswerThePublic (Keyword Ideas)", cost: "Free / Low (Premium Option)", learning_curve: "Low"},
-    "brightlocal_local_seo": { name: "BrightLocal (Local SEO)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
-    "whitespark_local_seo": { name: "Whitespark (Local SEO Tools)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
-    "moz_local": { name: "Moz Local (Local SEO Management)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "mailchimp_email": { name: "Mailchimp (Email Marketing)", cost: "Free / Medium (Premium option from ~$20/month)", learning_curve: "Medium" }, // Adjusted based on tiers
+    "answer_the_public": { name: "AnswerThePublic (Keyword Ideas)", cost: "Free / Low (Premium option from ~$99/month)", learning_curve: "Low"}, // Premium is higher
+    "brightlocal_local_seo": { name: "BrightLocal (Local SEO)", cost: "Medium (approx. $40-100+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100
+    "whitespark_local_seo": { name: "Whitespark (Local SEO Tools)", cost: "Medium (approx. $30-70+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100
+    "moz_local": { name: "Moz Local (Local SEO Management)", cost: "Medium (approx. $100+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100, but Moz is typically higher end
     "google_structured_data_helper": { name: "Google Structured Data Markup Helper", cost: "Free", learning_curve: "Medium"},
     "schema_org": { name: "Schema.org (Documentation)", cost: "Free", learning_curve: "High"}, // For learning
-    "surfer_seo": { name: "SurferSEO (Content Optimization)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
-    "marketmuse_content_strategy": { name: "MarketMuse (AI Content Planning)", cost: "High (approx. R2000+/month)", learning_curve: "High"},
+    "surfer_seo": { name: "SurferSEO (Content Optimization)", cost: "Medium (approx. $49-199+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100, adjusted for common tiers
+    "marketmuse_content_strategy": { name: "MarketMuse (AI Content Planning)", cost: "High (approx. $1500+/month)", learning_curve: "High"}, // R2000+ -> ~$100+, but MarketMuse is very high
     "google_trends": { name: "Google Trends", cost: "Free", learning_curve: "Low"},
-    "ubersuggest_seo": { name: "Ubersuggest (SEO Tool)", cost: "Free / Low (Premium Option)", learning_curve: "Medium"},
+    "ubersuggest_seo": { name: "Ubersuggest (SEO Tool)", cost: "Free / Low (Premium option from ~$29/month)", learning_curve: "Medium"},
     "google_nlp_api": { name: "Google Cloud Natural Language API", cost: "Medium (Usage-based)", learning_curve: "High"},
-    "textrazor_nlp": { name: "TextRazor (NLP API)", cost: "Free / Medium (Premium Option)", learning_curve: "High"},
-    "wordlift_semantic_seo": { name: "WordLift (AI Semantic SEO)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "High"},
-    "frase_io_content_optimization": { name: "Frase.io (AI Content Optimization)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
-    "hootsuite_social": { name: "Hootsuite (Social Media Management)", cost: "Medium (approx. R500-R2000/month)", learning_curve: "Medium"},
+    "textrazor_nlp": { name: "TextRazor (NLP API)", cost: "Free / Medium (Premium option, usage-based)", learning_curve: "High"},
+    "wordlift_semantic_seo": { name: "WordLift (AI Semantic SEO)", cost: "Medium (approx. $50-200+/month)", learning_curve: "High"}, // R500-R2000 -> ~$30-100, adjusted
+    "frase_io_content_optimization": { name: "Frase.io (AI Content Optimization)", cost: "Medium (approx. $15-100+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100, adjusted
+    "hootsuite_social": { name: "Hootsuite (Social Media Management)", cost: "Medium (approx. $49-200+/month)", learning_curve: "Medium"}, // R500-R2000 -> ~$30-100, adjusted
     "google_alerts": { name: "Google Alerts", cost: "Free", learning_curve: "Low" }
 };
 
@@ -46,8 +44,8 @@ const SEO_TYPES_DATA = [
         relevance_scale: "High",
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: ["content_seo"],
-        tools_recommended: ["google_search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
-        recommended_tool_ids: ["google_search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
+        tools_recommended: ["Google Search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
+        recommended_tool_ids: ["Google Search_console", "ahrefs_seo", "semrush_seo", "answer_the_public"],
         zero_click_impact: "High"
     },
     {
@@ -62,8 +60,8 @@ const SEO_TYPES_DATA = [
         relevance_scale: "Medium",
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: [],
-        tools_recommended: ["Google Business Profile", "BrightLocal", "Whitespark", "Moz Local"], // Kept old for reference, new one below
-        recommended_tool_ids: ["google_search_console", "brightlocal_local_seo", "whitespark_local_seo", "moz_local"], // Assuming Google Business Profile is managed via Search Console or implicitly
+        tools_recommended: ["Google Business Profile", "BrightLocal", "Whitespark", "Moz Local"],
+        recommended_tool_ids: ["Google Search_console", "brightlocal_local_seo", "whitespark_local_seo", "moz_local"],
         zero_click_impact: "High"
     },
     {
@@ -143,7 +141,7 @@ const SEO_TYPES_DATA = [
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         dependencies: ["content_seo"],
         tools_recommended: ["Google Search Results Analysis", "Ahrefs Content Explorer", "User Surveys/Feedback"],
-        recommended_tool_ids: ["google_search_console", "hotjar_analytics", "ahrefs_seo"],
+        recommended_tool_ids: ["Google Search_console", "hotjar_analytics", "ahrefs_seo"],
         zero_click_impact: "Low"
     }
 ];
@@ -205,7 +203,7 @@ const CHANNELS_DATA = [
         primary_benefits: ["Trust & Authority", "Attract New Clients/Leads", "Brand Awareness", "Thought Leadership"],
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         best_for_media_types: ["blog_posts", "case_studies"],
-        recommended_tool_ids: ["google_search_console", "google_analytics", "yoast_seo_wordpress", "rank_math_wordpress"]
+        recommended_tool_ids: ["Google Search_console", "google_analytics", "yoast_seo_wordpress", "rank_math_wordpress"]
     },
     {
         id: "google_business_profile",
@@ -216,7 +214,7 @@ const CHANNELS_DATA = [
         primary_benefits: ["Attract New Clients/Leads", "Local Visibility", "Customer Engagement"],
         industry_priority: { "healthcare": "High", "legal": "High", "financial": "High" },
         best_for_media_types: [],
-        recommended_tool_ids: ["google_search_console", "brightlocal_local_seo", "whitespark_local_seo", "google_alerts"] // Alerts for brand mentions
+        recommended_tool_ids: ["Google Search_console", "brightlocal_local_seo", "whitespark_local_seo", "google_alerts"] // Alerts for brand mentions
     }
 ];
 
