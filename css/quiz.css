@@ -1002,3 +1002,76 @@
 /* - Duplicated .button-group and button styles -> Consolidated into the new button styling section. */
 /* - Duplicated .hidden, .active (already globally defined or within .app-screen) */
 /* - Duplicated responsive styles for .quiz-wrapper, .app-screen h2,h3, .input-group, .button-group -> Consolidated. */
+
+/* Email Blueprint Section Styling */
+#results-screen .email-blueprint-section { /* Added #results-screen for specificity */
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #f8f8f8; /* Light background for distinction */
+    border-radius: 8px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+#results-screen .email-blueprint-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5em; /* Adjusted for consistency */
+}
+
+#results-screen .email-blueprint-section p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#results-screen #user-email-input { /* Ensured specificity */
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    max-width: 350px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#results-screen #send-blueprint-email-btn { /* Ensured specificity */
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#results-screen #send-blueprint-email-btn:hover { /* Ensured specificity */
+    background-color: #0056b3;
+}
+
+#results-screen #send-blueprint-email-btn:disabled { /* Style for disabled button */
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#results-screen #email-message { /* Ensured specificity */
+    margin-top: 15px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#results-screen #email-message.success { /* Ensured specificity */
+    color: #155724; /* Darker green for text */
+    background-color: #d4edda; /* Light green background */
+    border: 1px solid #c3e6cb;
+}
+
+#results-screen #email-message.error { /* Ensured specificity */
+    color: #721c24; /* Darker red for text */
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c6cb;
+}

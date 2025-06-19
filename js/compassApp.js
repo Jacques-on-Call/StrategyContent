@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigation Buttons
     const startCompassBtn = document.getElementById('start-compass-btn');
-    const nextButtons = appContainer.querySelectorAll('.next-btn'); // All next buttons including generate
+    const nextButtons = appContainer.querySelectorAll('.next-btn');
     const backButtons = appContainer.querySelectorAll('.back-btn');
-    const generateCompassBtn = document.getElementById('generate-compass-btn'); // This is now on q6-format
+    const generateCompassBtn = document.getElementById('generate-compass-btn');
     const startOverBtn = document.getElementById('start-over-btn');
-    const actionsBlueprintBtn = document.getElementById('actions-blueprint-btn'); // New button for all actions
+    // const actionsBlueprintBtn = document.getElementById('actions-blueprint-btn'); // This ID is removed from HTML
 
-    // Store user selections
+    // Store user selections (globally within DOMContentLoaded scope)
     const userSelections = {
         industry: null,
         journey: null,
@@ -93,9 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
         format: null
     };
 
-    let currentScreenIndex = 0; // 0: opt-in, 1: q1, 2: q2, etc.
+    // Branding details (globally within DOMContentLoaded scope, or get from a config)
+    const yourBrandName = "Strategy Content Agency";
+    const yourWebsite = "https://strategycontent.agency";
+    const yourContactEmail = "jacques@strategycontent.agency";
+    const yourCTA = "Ready to turn this blueprint into action? Let's connect for a personalized strategy session!";
+    const yourLinkedIn = "https://www.linkedin.com/in/jacquesdamhuis/";
 
-    // Function to show a specific screen
+
+    let currentScreenIndex = 0;
+
     function showScreen(index) {
         screens.forEach((screen, i) => {
             screen.classList.toggle('active', i === index);
@@ -104,23 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
         currentScreenIndex = index;
     }
 
-    // Initialize by showing the opt-in screen (screen 0)
     if (screens.length > 0) {
         showScreen(0);
     }
 
-
-    // Event Listeners for navigation
     if (startCompassBtn) {
         startCompassBtn.addEventListener('click', () => {
-            showScreen(1); // Go to Q1
+            showScreen(1);
         });
     }
 
-    // Handle all 'Next' buttons for quiz progression
     nextButtons.forEach(button => {
-        if (button.id === 'generate-compass-btn' || button.id === 'actions-blueprint-btn') { // Exclude special buttons
-            // These buttons have specific logic, handled below or elsewhere
+        // Exclude special buttons that have their own dedicated handlers
+        if (button.id === 'generate-compass-btn' /* || button.id === 'actions-blueprint-btn' - this ID is removed */) {
             return;
         }
         button.addEventListener('click', () => {
@@ -148,39 +151,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                showScreen(currentScreenIndex + 1);
+                if (currentScreenIndex < screens.length - 1) {
+                    showScreen(currentScreenIndex + 1);
+                }
             }
         });
     });
 
-    // Specific listener for the Generate Compass button on Q6
     if (generateCompassBtn) {
         generateCompassBtn.addEventListener('click', () => {
             const currentScreenElement = screens[currentScreenIndex];
-            if (!currentScreenElement) return; // Should not happen
+            if (!currentScreenElement) return;
             const currentScreenId = currentScreenElement.id;
 
             let isValid = true;
-            if (currentScreenId === 'q6-format') { // Ensure this logic only runs for Q6
+            if (currentScreenId === 'q6-format') {
                 userSelections.format = document.querySelector('input[name="format"]:checked')?.value;
                 if (!userSelections.format) { alert('Please select a preferred content format to continue.'); isValid = false; }
             } else {
-                // If generate-compass-btn is somehow clicked on a different screen, validation might be needed or log an error
                 console.warn("Generate button clicked on unexpected screen: " + currentScreenId);
-                // isValid = false; // Or handle as appropriate
             }
 
             if (isValid) {
-                generateCompassBlueprint(userSelections); // Generate blueprint
-                showScreen(screens.length - 1); // Show results screen (last screen)
+                generateCompassBlueprint(userSelections);
+                showScreen(screens.length - 1);
             }
         });
     }
 
-    // Back buttons (excluding start-over, which has specific reset logic)
     backButtons.forEach(button => {
         if (button.id === 'start-over-btn') {
-            // Handled separately below
             return;
         }
         button.addEventListener('click', () => {
@@ -190,67 +190,108 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Start Over button
     if (startOverBtn) {
         startOverBtn.addEventListener('click', () => {
             resetQuiz();
-            showScreen(0); // Go back to opt-in screen
+            showScreen(0);
         });
     }
 
+    // New Event Listener for #email-blueprint-form
+    const emailBlueprintForm = document.getElementById('email-blueprint-form');
+    if (emailBlueprintForm) {
+        emailBlueprintForm.addEventListener('submit', handleEmailBlueprint);
+    } else {
+        console.warn("Compass App: Email blueprint form (#email-blueprint-form) not found.");
+    }
 
-    // New listener for the "Download, Print or Email" button
-    if (actionsBlueprintBtn) {
-        actionsBlueprintBtn.addEventListener('click', () => {
-            const actionChoice = prompt(
-                "Choose an action:\n\n1. Download HTML\n2. Print\n3. Email Blueprint\n\nEnter 1, 2, or 3:"
-            );
+    async function handleEmailBlueprint(event) {
+        event.preventDefault();
 
-            if (actionChoice === '1') {
-                const blueprintContentDiv = document.getElementById('blueprint-content');
-                if (!blueprintContentDiv) {
-                     alert("Error: Blueprint content not found for download."); return;
-                }
-                const contentToDownload = blueprintContentDiv.cloneNode(true);
+        const userEmailInput = document.getElementById('user-email-input');
+        const emailMessage = document.getElementById('email-message');
+        const sendBtn = document.getElementById('send-blueprint-email-btn');
+        const blueprintContentDiv = document.getElementById('blueprint-content');
 
-                const instructionsInClone = contentToDownload.querySelector('#blueprint-actions-info');
-                if (instructionsInClone) instructionsInClone.parentNode.removeChild(instructionsInClone);
-                const contactCtaInClone = contentToDownload.querySelector('.on-screen-contact-cta');
-                if (contactCtaInClone) contactCtaInClone.parentNode.removeChild(contactCtaInClone);
-
-                const headerContentHtml = contentToDownload.querySelector('.blueprint-header') ? contentToDownload.querySelector('.blueprint-header').innerHTML : '';
-                const strategiesContainerHtml = contentToDownload.querySelector('.strategies-container') ? contentToDownload.querySelector('.strategies-container').innerHTML : '';
-
-                const yourBrandName = "Strategy Content Agency";
-                const yourWebsite = "https://strategycontent.agency";
-                const yourContactEmail = "jacques@strategycontent.agency";
-                const yourCTA = "Ready to turn this blueprint into action? Let's connect for a personalized strategy session!";
-
-                const blueprintHtmlForDownload = headerContentHtml + strategiesContainerHtml;
-
-                downloadBlueprint(blueprintHtmlForDownload, yourBrandName, yourWebsite, yourContactEmail, yourCTA);
-
-            } else if (actionChoice === '2') {
-                window.print();
-            } else if (actionChoice === '3') {
-                const userEmail = prompt("Please enter your email to receive the blueprint:");
-                if (userEmail && /\S+@\S+\.\S+/.test(userEmail)) { // Basic email validation
-                    const newsletterOptin = confirm("Would you like to subscribe to our newsletter for more insights?");
-
-                    console.log(`Sending blueprint to: ${userEmail}. Newsletter opt-in: ${newsletterOptin}`);
-                    // Actual email sending requires backend integration.
-                    alert('Blueprint email process initiated! Check your inbox shortly. (Note: This is a demo; actual email sending requires backend integration.)');
-
-                } else if (userEmail !== null) {
-                    alert("Please enter a valid email address.");
-                }
-            } else if (actionChoice !== null) {
-                alert("Invalid choice. Please enter 1, 2, or 3.");
+        if (!userEmailInput || !emailMessage || !sendBtn || !blueprintContentDiv) {
+            console.error('Email form elements or blueprint content not found.');
+            if (emailMessage) {
+                emailMessage.textContent = 'An unexpected error occurred. Please refresh and try again.';
+                emailMessage.className = 'error'; // Ensure class is set for styling
+                emailMessage.classList.remove('hidden');
             }
-        });
+            return;
+        }
+
+        const userEmail = userEmailInput.value.trim();
+        const blueprintHtml = blueprintContentDiv.innerHTML;
+
+        if (!userEmail || !blueprintHtml) {
+            emailMessage.textContent = 'Please enter a valid email address. If the blueprint is not visible, please generate it first.';
+            emailMessage.className = 'error';
+            emailMessage.classList.remove('hidden');
+            return;
+        }
+        if (!/\S+@\S+\.\S+/.test(userEmail)) {
+            emailMessage.textContent = 'Please enter a valid email address.';
+            emailMessage.className = 'error';
+            emailMessage.classList.remove('hidden');
+            return;
+        }
+
+        emailMessage.textContent = 'Sending...';
+        emailMessage.className = '';
+        emailMessage.classList.remove('hidden');
+        sendBtn.disabled = true;
+
+        try {
+            const payload = {
+                email: userEmail,
+                blueprintHtml: blueprintHtml,
+            };
+            if (typeof userSelections !== 'undefined') {
+                payload.userSelections = userSelections; // userSelections is globally available
+            }
+            // Add brand_details if needed by the backend, similar to how it was done for download
+            // For this example, assuming PHP script might use it or it's part of blueprintHtml already
+            payload.brand_details = {
+                brandName: yourBrandName,
+                website: yourWebsite,
+                contactEmail: yourContactEmail,
+                cta: yourCTA,
+                linkedIn: yourLinkedIn
+            };
+
+
+            const response = await fetch('send_blueprint_email.php', { // Path to your PHP script
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                emailMessage.textContent = result.message || 'Blueprint successfully sent to your inbox!';
+                emailMessage.className = 'success';
+                userEmailInput.value = '';
+            } else {
+                emailMessage.textContent = result.message || 'Failed to send blueprint. Please try again.';
+                emailMessage.className = 'error';
+            }
+        } catch (error) {
+            console.error('Email send error:', error);
+            emailMessage.textContent = 'An unexpected error occurred. Please try again later.';
+            emailMessage.className = 'error';
+        } finally {
+            emailMessage.classList.remove('hidden');
+            sendBtn.disabled = false;
+        }
     }
 
-    // Function to generate the compass blueprint with recommendations
+
     function generateCompassBlueprint(selections) {
         const blueprintContentDiv = document.getElementById('blueprint-content');
         if (!blueprintContentDiv) {
@@ -258,13 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         blueprintContentDiv.innerHTML = '';
-
-        // Branding and Main Title
-        const yourBrandName = "Strategy Content Agency";
-        const yourWebsite = "https://strategycontent.agency";
-        const yourContactEmail = "jacques@strategycontent.agency";
-        const yourCTA = "Ready to turn this blueprint into action? Let's connect for a personalized strategy session!";
-        const yourLinkedIn = "https://www.linkedin.com/in/jacquesdamhuis/";
 
         let summaryHtml = `
             <div class="blueprint-header" style="text-align: center; margin-bottom: 30px;">
@@ -281,7 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const strategiesContainer = document.createElement('div');
         strategiesContainer.className = 'strategies-container';
 
-        // Safely access global data structures
         const local_SEO_TYPES_DATA = typeof SEO_TYPES_DATA !== 'undefined' ? SEO_TYPES_DATA : [];
         const local_MEDIA_TYPES_DATA = typeof MEDIA_TYPES_DATA !== 'undefined' ? MEDIA_TYPES_DATA : [];
         const local_CHANNELS_DATA = typeof CHANNELS_DATA !== 'undefined' ? CHANNELS_DATA : [];
@@ -322,11 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (relevantMediaTypes.length > 0) {
             recommendedStrategies.push({ id: relevantMediaTypes[0].id, type: 'media', name: relevantMediaTypes[0].name });
         }
-        // Ensure we don't push undefined if relevantChannels is empty
         if (relevantChannels.length > 0 && relevantChannels[0]) {
              recommendedStrategies.push({ id: relevantChannels[0].id, type: 'channel', name: relevantChannels[0].name });
         }
-
 
         recommendedStrategies = recommendedStrategies.slice(0, 4);
 
@@ -375,10 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const effortDataSource = (dataType === 'media') ? strategyData.estimated_effort_hours_per_item : strategyData.estimated_effort_hours_per_month;
             if (effortDataSource && typeof effortDataSource.diy === 'string') {
                 effortText = effortDataSource.diy;
-            } else if (effortDataSource && typeof effortDataSource === 'string') { // Fallback for older string format
+            } else if (effortDataSource && typeof effortDataSource === 'string') {
                 effortText = effortDataSource;
             }
-
 
             let keyActionsHtml = '<ul>';
             const descriptionForActions = strategyData.description || \`Implement \${strategyData.name} by focusing on its core objectives.\`;
@@ -399,7 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const whyItMattersText = \`This strategy is pivotal for a business in the <strong>\${(selections.industry || 'your').replace(/_/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</strong> sector, especially when aiming to <strong>\${primaryGoalsText}</strong>. Focusing on <strong>\${strategyData.name}</strong> will help you \${strategyData.why_it_matters || whyItMattersDefault}\`;
 
-
             const card = document.createElement('div');
             card.className = 'strategy-card';
             card.innerHTML = \`
@@ -418,39 +447,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         blueprintContentDiv.appendChild(strategiesContainer);
 
-        const onScreenActionsHtml = \`
-            <div id="blueprint-actions-info" style="text-align: center; margin-top: 40px; padding: 20px; background-color: #fff9e6; border-radius: 10px; border: 1px solid #ffc107;">
-                <p style="font-size: 1.1em; color: var(--dark-grey); margin-bottom: 15px;">
-                    This is your custom Digital Impact Blueprint!
-                </p>
-                <p style="font-size: 1em; color: var(--dark-grey);">
-                    You can easily <strong>download it as an HTML file</strong> for offline access, <strong>print it</strong> for a physical copy, or <strong>receive it via email</strong> for convenient storage and future reference.
-                </p>
-                <p style="font-size: 1em; color: var(--dark-grey); margin-top: 10px;">
-                    Click the <strong>"Download, Print or Email"</strong> button on the main page to choose your preferred option!
-                </p>
-            </div>
-            <div class="on-screen-contact-cta" style="text-align: center; margin-top: 20px; padding: 20px; background-color: #e6f7ee; border-radius: 10px; border: 1px solid #006300;">
-                <h3 style="color: #006300; margin-bottom: 15px;">Ready to turn this blueprint into action?</h3>
-                <p style="font-size: 1.1em; color: var(--dark-grey); margin-bottom: 20px;">\${yourCTA}</p>
-                <button type="button" class="btn next-btn"
-                        onclick="window.open('mailto:\${yourContactEmail}?subject=Inquiry about my Digital Impact Blueprint', '_blank');"
-                        style="background-color: var(--blue); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; margin-right: 10px;">
-                    Email \${yourBrandName}
-                </button>
-                <button type="button" class="btn"
-                        onclick="window.open('\${yourWebsite}', '_blank');"
-                        style="background-color: var(--green); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none;">
-                    Visit \${yourBrandName}
-                </button>
-                \${yourLinkedIn ? \`<p style="margin-top: 15px; font-size: 0.9em;"><a href="\${yourLinkedIn}" target="_blank" style="color: var(--blue); text-decoration: underline;">Connect with Jacques on LinkedIn</a></p>\` : ''}
-            </div>
-        \`;
-        const actionsInfoDiv = document.createElement('div');
-        actionsInfoDiv.innerHTML = onScreenActionsHtml;
-        blueprintContentDiv.appendChild(actionsInfoDiv);
-    }
+        // The direct download button is added here, inside blueprintContentDiv
+        const directDownloadButton = document.createElement('button');
+        directDownloadButton.id = 'download-blueprint-btn';
+        directDownloadButton.className = 'btn compass-download-btn';
+        directDownloadButton.textContent = 'Download Blueprint (HTML)';
+        directDownloadButton.addEventListener('click', () => {
+            // Prepare HTML for direct download (remove on-screen CTAs etc.)
+            const contentToDownload = blueprintContentDiv.cloneNode(true);
+            const btnToRemove = contentToDownload.querySelector('#download-blueprint-btn');
+            if(btnToRemove) btnToRemove.parentNode.removeChild(btnToRemove);
+            const emailFormSection = contentToDownload.querySelector('.email-blueprint-section');
+            if(emailFormSection) emailFormSection.parentNode.removeChild(emailFormSection);
 
+            const coreHtml = contentToDownload.innerHTML;
+            downloadBlueprint(coreHtml, yourBrandName, yourWebsite, yourContactEmail, yourCTA);
+        });
+        blueprintContentDiv.appendChild(directDownloadButton);
+
+
+        // The on-screen specific CTA and info about email form is now part of HTML, not added here.
+        // However, if you want to dynamically add other content *after* the form, it would go here.
+    }
 
     function resetQuiz() {
         document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
@@ -467,15 +485,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (blueprintContentDiv) {
             blueprintContentDiv.innerHTML = '';
         }
+        const emailMsg = document.getElementById('email-message');
+        if(emailMsg) {
+            emailMsg.classList.add('hidden');
+            emailMsg.textContent = '';
+        }
+        const emailInput = document.getElementById('user-email-input');
+        if(emailInput) emailInput.value = '';
+
     }
 
-    // Console warnings for debugging missing elements (good practice!)
     if (screens.length === 0) {
         console.error("Compass App: No screens found (elements with class 'app-screen').");
     }
     if (!startCompassBtn) console.warn("Compass App: Start button not found.");
     if (!generateCompassBtn) console.warn("Compass App: Generate button not found.");
-    if (!actionsBlueprintBtn) console.warn("Compass App: Actions Blueprint button ('actions-blueprint-btn') not found.");
+    // if (!actionsBlueprintBtn) console.warn("Compass App: Actions Blueprint button ('actions-blueprint-btn') not found."); // This button is removed
     if (!startOverBtn && backButtons.length > 0 && (!backButtons[backButtons.length-1] || backButtons[backButtons.length-1].id !== 'start-over-btn')) {
         console.warn("Compass App: Start Over button ('start-over-btn') might be missing or not correctly identified.");
     }

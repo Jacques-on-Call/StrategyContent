@@ -468,10 +468,22 @@
 
 <div class="app-screen hidden" id="results-screen">
     <div id="blueprint-content">
-        </div>
+        <!-- JS will populate this and add the #download-blueprint-btn here -->
+    </div>
+
+    <div class="email-blueprint-section">
+        <h3>Want Your Blueprint Emailed?</h3>
+        <p>Enter your email address below to receive a copy of your personalized blueprint directly in your inbox.</p>
+        <form id="email-blueprint-form">
+            <input type="email" id="user-email-input" placeholder="Your Email Address" required>
+            <button type="submit" id="send-blueprint-email-btn">Email My Blueprint</button>
+            <p id="email-message" class="hidden"></p>
+        </form>
+    </div>
+
     <div class="button-group">
         <button type="button" class="back-btn" id="start-over-btn">Start Over</button>
-        <button type="button" id="actions-blueprint-btn" class="next-btn">Download, Print or Email</button>
+        <!-- The old #actionsBlueprintBtn has been removed -->
     </div>
 </div>
 
