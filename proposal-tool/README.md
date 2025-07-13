@@ -28,3 +28,24 @@ The costs and prices for the services are managed in the backend. To update them
 - `proposal-tool/database/schema.sql`: This file defines the database schema, including the tables that store the prices for the services.
 
 After modifying these files, you will need to restart the backend server for the changes to take effect.
+
+## cPanel Database Setup
+
+1.  **Log in to your cPanel account.**
+2.  **Navigate to the "MySQL Databases" section.**
+3.  **Create a new database.**
+    *   Enter a name for your database (e.g., `proposal_tool`) and click "Create Database".
+4.  **Create a new database user.**
+    *   Enter a username and password for your database user and click "Create User".
+5.  **Add the user to the database.**
+    *   Select the user and the database from the dropdown menus and click "Add".
+    *   Grant all privileges to the user and click "Make Changes".
+6.  **Import the database schema.**
+    *   Navigate to the "phpMyAdmin" section in cPanel.
+    *   Select the database you created from the left-hand menu.
+    *   Click on the "Import" tab.
+    *   Click "Choose File" and select the `database/schema.sql` file from this project.
+    *   Click "Go" to import the schema.
+7.  **Configure the application.**
+    *   Rename the `.env.example` file in the `backend` directory to `.env`.
+    *   Open the `.env` file and replace the placeholder values with your database credentials.
