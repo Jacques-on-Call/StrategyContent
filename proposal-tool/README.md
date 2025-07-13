@@ -49,3 +49,14 @@ After modifying these files, you will need to restart the backend server for the
 7.  **Configure the application.**
     *   Rename the `.env.example` file in the `backend` directory to `.env`.
     *   Open the `.env` file and replace the placeholder values with your database credentials.
+
+## Building for Production
+
+To build the frontend for production, run the following command from the `proposal-tool/frontend` directory:
+
+```
+npm install
+npm run build
+```
+
+This will create a `build` directory in the `proposal-tool/frontend` directory. You can then upload the contents of the `build` directory to your web server.
