@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
+const db = require('./database');
 const { calculateTotalCost } = require('../tools/cost_calculator');
 const { trackUsage } = require('../tools/usage_tracker');
 
@@ -10,22 +10,6 @@ const port = process.env.PORT || 3001;
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Database connection (replace with your actual credentials)
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'proposal_tool'
-});
-
-db.connect(err => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log('Connected to the database.');
-});
 
 // Basic route
 app.get('/', (req, res) => {
