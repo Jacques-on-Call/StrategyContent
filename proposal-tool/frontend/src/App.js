@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     // Create a new proposal when the app loads
-    fetch('https://strategycontent.agency/proposal-tool/api/proposals', {
+    fetch('/proposal-tool/api/proposals', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ClientID: 1, Status: 'Draft' }) // Assuming client ID 1 for now
@@ -25,7 +25,7 @@ function App() {
       });
 
     // Fetch services
-    fetch('https://strategycontent.agency/proposal-tool/api/services')
+    fetch('/proposal-tool/api/services')
       .then(res => res.json())
       .then(data => setServices(data))
       .catch(err => console.error(err));
