@@ -1,4 +1,3 @@
-yaml
 name: Test Node Versions
 
 on:
@@ -19,6 +18,19 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install >> output.log 2>&1
-    - run: npm test >> output.log 2>&1
-    - run: cat output.log
+    - name: Install (root)
+      run: npm install >> output.log 2>&1
+    - name: Install (frontend)
+      run: npm install --prefix frontend >> output.log 2>&1
+    - name: Install (backend)
+      run: npm install --prefix backend >> output.log 2>&1
+    - name: Audit fix
+      run: npm audit fix >> output.log 2>&1
+    - name: Run tests
+      run: npm test >> output.log 2>&1
+    - name: Build
+      run: npm run build >> output.log 2>&1 || echo "⚠️ Build missing" >> output.log
+    - name: Lint
+      run: npm run lint >> output.log 2>&1 || echo "⚠️ Lint missing" >> output.log
+    - name: Show output
+      run: cat output.log
