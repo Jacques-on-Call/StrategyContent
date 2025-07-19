@@ -19,5 +19,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
+    - run: npm install >> output.log 2>&1
+    - run: npm test >> output.log 2>&1
+    - run: cat output.log
