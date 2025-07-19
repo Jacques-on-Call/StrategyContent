@@ -3,7 +3,7 @@
 > npm install --prefix backend && npm install --prefix frontend
 
 
-up to date, audited 112 packages in 957ms
+up to date, audited 112 packages in 827ms
 
 18 packages are looking for funding
   run `npm fund` for details
@@ -18,12 +18,15 @@ To address all issues (including breaking changes), run:
 
 Run `npm audit` for details.
 
-up to date, audited 1512 packages in 5s
+up to date, audited 1512 packages in 3s
 
 275 packages are looking for funding
   run `npm fund` for details
 
-9 vulnerabilities (3 moderate, 6 high)
+11 vulnerabilities (2 low, 3 moderate, 6 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
 
 To address all issues (including breaking changes), run:
   npm audit fix --force
@@ -41,52 +44,20 @@ Run `npm audit` for details.
 > proposal-tool-frontend@0.1.0 start
 > PORT=3002 react-scripts start
 
-Server is running on port 3001
-Error connecting to the database: AggregateError [ECONNREFUSED]: 
-    at internalConnectMultiple (node:net:1134:18)
-    at afterConnectMultiple (node:net:1715:7) {
-  code: 'ECONNREFUSED',
-  fatal: true,
-  [errors]: [
-    Error: connect ECONNREFUSED ::1:3306
-        at createConnectionError (node:net:1678:14)
-        at afterConnectMultiple (node:net:1708:16) {
-      errno: -111,
-      code: 'ECONNREFUSED',
-      syscall: 'connect',
-      address: '::1',
-      port: 3306
-    },
-    Error: connect ECONNREFUSED 127.0.0.1:3306
-        at createConnectionError (node:net:1678:14)
-        at afterConnectMultiple (node:net:1708:16) {
-      errno: -111,
-      code: 'ECONNREFUSED',
-      syscall: 'connect',
-      address: '127.0.0.1',
-      port: 3306
-    }
-  ]
-}
-(node:11182) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-(node:11182) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
-Starting the development server...
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
 
-Compiled successfully!
-
-You can now view proposal-tool-frontend in the browser.
-
-  Local:            http://localhost:3002/proposal-tool
-  On Your Network:  http://10.0.0.240:3002/proposal-tool
-
-Note that the development build is not optimized.
-To create a production build, use npm run build.
-
-assets by path static/js/*.js 1.44 MiB
-  asset static/js/bundle.js 1.43 MiB [emitted] (name: main) 1 related asset
-  asset static/js/node_modules_web-vitals_dist_web-vitals_js.chunk.js 7.25 KiB [emitted] 1 related asset
-asset index.html 697 bytes [emitted]
-asset asset-manifest.json 528 bytes [emitted]
-cached modules 1.31 MiB (javascript) 30.9 KiB (runtime) [cached] 132 modules
-webpack 5.100.1 compiled successfully in 4180 ms
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at Function.listen (/workspaces/StrategyContent/proposal-tool/backend/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/workspaces/StrategyContent/proposal-tool/backend/server.js:187:5)
+    at Module._compile (node:internal/modules/cjs/loader:1730:14)
+    at Object..js (node:internal/modules/cjs/loader:1895:10)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net
