@@ -34,3 +34,8 @@ jobs:
       run: npm run lint >> output.log 2>&1 || echo "⚠️ Lint missing" >> output.log
     - name: Show output
       run: cat output.log
+
+echo "\n🗂 Files changed in latest commit:" >> output.log
+git diff-tree --no-commit-id --name-only -r HEAD >> output.log
+
+git diff --name-only origin/main HEAD >> output.log
