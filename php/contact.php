@@ -107,9 +107,42 @@ function checkSubmissionLimit($ip) {
     }
     
 
+    // Forward to Python service
+    $python_service_url = 'http://127.0.0.1:8000/analyze';
+    $data = [
+        'name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'company' => $company,
+        'website_url' => filter_input(INPUT_POST, 'website_url', FILTER_SANITIZE_URL),
+        'project' => $project,
+        'budget_range' => filter_input(INPUT_POST, 'budget_range', FILTER_SANITIZE_STRING),
+        'newsletter' => $newsletter,
+        'service' => $service,
+        'contact_method' => $contactMethod,
+        'contact_other_text' => filter_input(INPUT_POST, 'contact-other-text', FILTER_SANITIZE_STRING)
+    ];
+
+    $ch = curl_init($python_service_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen(json_encode($data))
+    ]);
+
+    $python_response = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    error_log("Python service response code: " . $httpcode);
+    error_log("Python service response: " . $python_response);
+
+
     $to = "contact@strategycontent.agency";
     $subject = "New Contact Form Submission";
-    $message = "Name: $name\nEmail: $email\nPhone: $phone\nCompany: $company\nProject Details: $project\nService: $service\nNewsletter Subscription: $newsletter\nPreferred Contact Method: $contactMethod";
+    $message = "Name: $name\nEmail: $email\nPhone: $phone\nCompany: $company\nWebsite URL: " . $data['website_url'] . "\nProject Details: $project\nBudget: " . $data['budget_range'] . "\nService: $service\nNewsletter Subscription: $newsletter\nPreferred Contact Method: $contactMethod";
 
     $headers = "From: $email";
 
