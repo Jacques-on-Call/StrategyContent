@@ -80,9 +80,11 @@ function checkSubmissionLimit($ip) {
     $service = filter_input(INPUT_POST, 'service', FILTER_SANITIZE_STRING);
     $newsletter = isset($_POST['newsletter']) ? 'Yes' : 'No';
     $contactMethod = filter_input(INPUT_POST, 'contact-method', FILTER_SANITIZE_STRING);
+    $form_source = filter_input(INPUT_POST, 'form_source', FILTER_SANITIZE_STRING);
 
     error_log("Processed form data: " . print_r([
         'name' => $name,
+        'form_source' => $form_source,
         'email' => $email,
         'phone' => $phone,
         'company' => $company,
@@ -108,15 +110,23 @@ function checkSubmissionLimit($ip) {
     
 
     $to = "contact@strategycontent.agency";
-    $subject = "New Contact Form Submission";
-    $message = "Name: $name\nEmail: $email\nPhone: $phone\nCompany: $company\nProject Details: $project\nService: $service\nNewsletter Subscription: $newsletter\nPreferred Contact Method: $contactMethod";
+    $subject = "New " . ($form_source ? $form_source : "Contact Form") . " Submission from " . $name;
+    $message = "Form Source: " . ($form_source ? $form_source : "Unknown") . "\n\n" .
+               "Name: $name\n" .
+               "Email: $email\n" .
+               "Phone: $phone\n" .
+               "Company: $company\n" .
+               "Project Details: $project\n" .
+               "Service: $service\n" .
+               "Newsletter Subscription: $newsletter\n" .
+               "Preferred Contact Method: $contactMethod";
 
     $headers = "From: $email";
 
     error_log("Attempting to send email");
     if (mail($to, $subject, $message, $headers)) {
-        error_log("Email sent successfully");
-        echo 'success';
+        error_log("Email sent successfully. Redirecting to success page.");
+        header("Location: ../contact/contact-success.html");
         exit;
     } else {
         $error = error_get_last();
