@@ -1,0 +1,269 @@
+.offer-banner {
+  position: relative;
+  text-align: center;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.offer-bg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-offer {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: var(--blue);
+}
+
+.hero-offer h1 {
+  color: var(--white);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-offer .slogan {
+  color: var(--light-green);
+  font-size: 1.4rem;
+  font-weight: 600;
+	padding: 2rem 0;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.subheading {
+  font-size: 1.1em;
+  color: #666;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  line-height: 1.4;
+  font-style: italic; /* Optional: adds a gentle tone */
+}
+
+.nested-detail {
+  margin-top: 2px; /* Slight spacing from the main point */
+  font-size: 0.9em; /* Slightly smaller text */
+  color: #555; /* Optional: muted color for distinction */
+}
+
+.price {
+  font-size: 1.5em;
+  color: #2E8B57; /* A confident green tone */
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+
+
+
+.offer-title {
+  font-size: 2.2em;
+  color: #003971;
+  margin-bottom: 0.4em;
+  font-weight: bold;
+}
+
+.offer-subheading {
+  font-size: 1.1em;
+  color: #FFFFFF;
+  margin-bottom: 1em;
+}
+
+.offer-box {
+    padding: 20px;
+  margin-bottom: 20px;
+  width: var(--container-width);
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+}
+}
+
+/* You might want to remove the margin from your h2 and ul to fit this new box */
+.offer-box h2,
+.offer-box ul {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+.price-badge {
+  display: inline-block;
+  background-color: var(--light-green);
+  color: var(--green);
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+  font-family: var(--font-family);
+}
+
+.share-offer {
+  background-color: var(--green); /* Brand blue */
+  color: #FFFFFF;
+  padding: 1em;
+  border-radius: 8px;
+  margin-top: 2em;
+}
+
+.share-offer h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.share-buttons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.share-buttons li a {
+  background-color: #C7EA46;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.share-buttons li a:hover {
+  background-color: #FF2400;
+  color: #FFFFFF;
+}
+
+.container .hero-section a.learn-more-link {
+  color: var(--link-light) !important;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cta-offer-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* All your other button styles remain the same */
+.cta-offer-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+  border: 1px solid var(--scarlet);
+  background: var(--green);
+  min-width: 120px;
+  text-align: center;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+/* New rule to correctly target the <a> tag inside the button */
+.offer-box .cta-offer-button a,
+.offer-box .cta-offer-button a:link,
+.offer-box .cta-offer-button a:visited,
+.offer-box .cta-offer-button a:hover,
+.offer-box .cta-offer-button a:active {
+  color: var(--link-dark) !important;
+}
+
+
+
+
+
+.three-square-images {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Adjust gap between images as needed */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.three-square-images img {
+  aspect-ratio: 1 / 1; /* Ensures images remain square */
+  width: calc((100% - 2rem) / 3); /* Accounts for gap space */
+  height: auto;
+  object-fit: cover; /* Ensures images fill the square without distortion */
+}
+
+/* Optional: Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .three-square-images {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .three-square-images img {
+    width: calc((100% - 1rem) / 3); /* Adjust for smaller gap */
+  }
+}
+
+/* Optional: Stack on very small screens */
+@media (max-width: 480px) {
+  .three-square-images img {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.simple-offer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.simple-offer-form input[type="text"],
+.simple-offer-form input[type="email"] {
+  /* Increased padding and font-size for bigger fields */
+  padding: 12px;
+  font-size: 16px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-method-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.contact-method-section p {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--dark-light);
+}
+
+.contact-method-section .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-method-section input[type="radio"] {
+    margin-right: 5px;
+}
+
+.contact-method-section input[type="text"] {
+    margin-left: 10px;
+    padding: 8px; /* Slightly smaller for the "Other" field */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.honeypot {
+  /* This rule is critical to hide the field from human users */
+  display: none;
+}
