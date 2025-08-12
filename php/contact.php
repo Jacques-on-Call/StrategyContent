@@ -125,7 +125,39 @@ function checkSubmissionLimit($ip) {
 
     error_log("Attempting to send email");
     if (mail($to, $subject, $message, $headers)) {
-        error_log("Email sent successfully. Redirecting to success page.");
+        error_log("Admin notification email sent successfully.");
+
+        // If the submission is for the SEO Starter Package, send a confirmation email to the client.
+        if ($form_source === 'SEO Starter Package') {
+            error_log("Form source is SEO Starter Package. Sending confirmation email to client at " . $email);
+
+            $client_to = $email;
+            $client_subject = "Your SEO Starter Package - Next Steps";
+            $first_name = explode(' ', $name)[0];
+
+            // Load the HTML email template
+            $email_template_path = __DIR__ . '/email_templates/seo_starter_client_email.html';
+            if (file_exists($email_template_path)) {
+                $client_message = file_get_contents($email_template_path);
+                $client_message = str_replace('[First Name]', htmlspecialchars($first_name), $client_message);
+
+                // Headers for HTML email
+                $client_headers = "MIME-Version: 1.0" . "\r\n";
+                $client_headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                $client_headers .= "From: Strategy Content Agency <contact@strategycontent.agency>" . "\r\n";
+
+                // Send the email to the client
+                if (mail($client_to, $client_subject, $client_message, $client_headers)) {
+                    error_log("Client confirmation email sent successfully to " . $client_to);
+                } else {
+                    error_log("Failed to send client confirmation email to " . $client_to);
+                }
+            } else {
+                error_log("Could not find the client email template file at: " . $email_template_path);
+            }
+        }
+
+        error_log("Redirecting to success page.");
         header("Location: ../contact/contact-success.html");
         exit;
     } else {
