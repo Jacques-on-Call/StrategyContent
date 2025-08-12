@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://strategycontent.agency/offers/seo-starter.html">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/offers.css">
+<script src="https://www.google.com/recaptcha/api.js?render=6LdMRV4qAAAAAODiZpygVMvT5sb2n30Xxps8EJin"></script>
 
 <!-- Schema.org Offer -->
 <script type="application/ld+json">
@@ -127,6 +128,7 @@
         </div>
     </div>
 
+    <input type="hidden" name="form_source" value="SEO Starter Package">
     <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 
     <div class="honeypot">
@@ -189,7 +191,7 @@
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault(); // Stop normal submit until we have token
     grecaptcha.ready(function() {
-        grecaptcha.execute('your-site-key', {action: 'submit'}).then(function(token) {
+        grecaptcha.execute('6LdMRV4qAAAAAODiZpygVMvT5sb2n30Xxps8EJin', {action: 'submit'}).then(function(token) {
             document.getElementById('g-recaptcha-response').value = token;
             e.target.submit(); // Now actually submit the form
         });
