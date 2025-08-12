@@ -7,10 +7,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     const { initializeLogo } = await import('./logo.js');
     initializeLogo();
   }
-  if (document.querySelector('.chatbot')) {
-    const { initializeChatbot } = await import('./chatbot.js');
-    initializeChatbot();
-  }
   if (document.getElementById('getQuoteBtn')) {
     const { initializeGetQuoteButton } = await import('./get-quote-button.js');
     initializeGetQuoteButton();
