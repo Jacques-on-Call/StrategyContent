@@ -1,0 +1,80 @@
+.quick-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #F8F9FA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 300px;
+    z-index: 1000;
+}
+
+.simple-contact h3 {
+    color: #517DB2;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.lazy-contact input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-preferences {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-preferences label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.simple-submit {
+    background: #7D901A;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cta-option {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.cta-option a {
+    color: #517DB2;
+    text-decoration: underline;
+}
+
+.linkedin-link {
+    color: #0077b5; /* LinkedIn's brand color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.linkedin-link:hover {
+    color: #00669c; /* Slightly darker on hover */
+    text-decoration: underline;
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+.recaptcha-terms {
+    font-size: 12px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}

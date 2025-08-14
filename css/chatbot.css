@@ -1,0 +1,17 @@
+.chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--grey);
+    border: 2px solid var(--green);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+	 z-index: var(--z-index-chatbot);
+}
+
+.chatbot:hover, .chatbot.active {
+    background-color: var(--green);
+}
