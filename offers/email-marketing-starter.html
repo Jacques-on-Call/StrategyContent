@@ -3,8 +3,8 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Email Marketing Starter – Turn Quiet Inboxes into Warm Conversations</title>
-      <meta name="description" content="Turn quiet inboxes into warm conversations. Our Email Marketing Starter package helps you connect with your audience and drive action.">
+      <title>Email Marketing Starter Offer – Strategy Content Agency</title>
+      <meta name="description" content="Get a 3-part email welcome series for just $99. Perfect for nurturing new leads and building relationships.">
       <link rel="canonical" href="https://strategycontent.agency/offers/email-marketing-starter.html">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/offers.css">
@@ -18,12 +18,34 @@
   "url": "https://strategycontent.agency/offers/email-marketing-starter.html",
   "priceCurrency": "USD",
   "price": "99",
-  "description": "Turn quiet inboxes into warm conversations.",
+  "description": "A 3-part email welcome series to nurture new leads and build relationships.",
   "itemOffered": {
     "@type": "Service",
     "name": "Email Marketing",
-    "url": "https://strategycontent.agency/services/email-marketing.html"
+    "url": "https://strategycontent.agency/services/services.html"
   }
+}
+</script>
+      <!-- Schema.org BreadcrumbList -->
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://strategycontent.agency/index.html"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Special Offers",
+    "item": "https://strategycontent.agency/offers/intro-offers.html"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Email Marketing Starter"
+  }]
 }
 </script>
    </head>
@@ -70,39 +92,42 @@
          </nav>
       </header>
       <main>
-				<picture class="offer-bg">
-    <source media="(max-width: 600px)" srcset="../img/email-offer-megaphone-bg-small.webp" type="image/webp">
-    <source media="(min-width: 601px) and (max-width: 1024px)" srcset="../img/email-offer-megaphone-bg-medium.webp" type="image/webp">
-    <source srcset="../img/email-offer-megaphone-bg-large.webp" type="image/webp">
-    <img src="../img/email-offer-megaphone-bg.webp"
-         alt="A graphic of a megaphone emerging from an open envelope, symbolizing an email marketing offer."
-         title="Email marketing offer background"
-         width="1920"
-         height="1080">
-</picture>
-
-        <section class="hero-offer">
-            <div class="content-wrapper">
+         <picture class="offer-bg">
+            <source media="(max-width: 600px)" srcset="../img/email-marketing-bg-small.webp" type="image/webp">
+            <source media="(min-width: 601px) and (max-width: 800px)" srcset="../img/email-marketing-bg-medium.webp" type="image/webp">
+            <source srcset="../img/email-marketing-bg.webp" type="image/webp">
+            <img src="../img/email-marketing-bg.webp"
+               alt="Email Marketing Starter Offer" title="Nurture new leads with our Email Marketing Starter offer" width="1920" height="1080">
+         </picture>
+         <div class="content-wrapper">
+            <ul class="breadcrumb">
+               <li><a href="../index.html">Home</a></li>
+               <li><a href="intro-offers.html">Special Offers</a></li>
+               <li>Email Marketing Starter</li>
+            </ul>
+            <section class="hero-offer">
                <h1>Email Marketing Starter</h1>
-               <p class="slogan">Turn quiet inboxes into warm conversations</p>
-            </div>
-         </section>
-         <section class="offer-box">
-            <div class="content-wrapper">
+               <p class="slogan">Nurture new leads and build relationships with a 3-part email welcome series.</p>
+            </section>
+            <section class="offer-box">
                <h2>What You Get</h2>
-                <ul>
-                    <li>One newsletter designed for connection and clicks</li>
-                    <li>One promo email designed to drive action</li>
-                    <li>Two subject lines per email to A/B test</li>
-                    <li>Preheader texts for each to entice opens</li>
-                    <li>Clear CTA copy that feels natural</li>
-                    <li>Light formatting for easy paste into your tool</li>
-                    <li>Delivery in 3–5 business days</li>
-                    <li>Two rounds of edits to match your voice and goals</li>
-                </ul>
+               <ul>
+                  <li>
+                     <strong>3-part email welcome series</strong>
+                     <div class="nested-detail">Engage new subscribers from the moment they sign up.</div>
+                  </li>
+                  <li>
+                     <strong>Compelling subject lines and copy</strong>
+                     <div class="nested-detail">We'll write emails that get opened, read, and clicked.</div>
+                  </li>
+                  <li>
+                     <strong>Customised to your brand voice</strong>
+                     <div class="nested-detail">We'll match your brand's tone and style to ensure a consistent experience.</div>
+                  </li>
+               </ul>
                <div class="cta-offer-wrapper">
-                  <div class="price-badge">Now Only $99</div>
-                   <form id="offerForm" action="../php/contact.php" method="POST" class="simple-offer-form">
+                  <div class="price-badge">Limited Offer <b>$99</b></div>
+                  <form id="offerForm" action="../php/contact.php" method="POST" class="simple-offer-form">
                      <input type="text" id="offer-name" name="name" placeholder="Your Name" required>
                      <input type="email" id="offer-email" name="email" placeholder="Your Email" required>
                      <div class="contact-method-section">
@@ -117,7 +142,7 @@
                            <label for="contact-other">
                            <input type="radio" id="contact-other" name="contact-method" value="other"> Other
                            </label>
-                           <input type="text" id="contact-other-text" name="contact-other-text" placeholder="Your details for easy communication.">
+                           <input type="text" id="contact-other-text" name="contact-other-text" placeholder="Please specify">
                         </div>
                      </div>
                      <input type="hidden" name="form_source" value="Email Marketing Starter">
@@ -126,74 +151,61 @@
                         <label for="honey">Leave this empty</label>
                         <input type="text" id="honey" name="honey">
                      </div>
-                     <button type="submit" class="cta-offer-button">Get my email offer.</button>
+                     <button type="submit" class="cta-offer-button">Start Nurturing Leads</button>
                   </form>
                </div>
-            </div>
-         </section>
-        <section class="container">
-            <h2>What my clients say</h2>
-            <div class="three-square-images">
-               <img src="../img/jacques-atiengen-o-testimonial.webp" alt="Atiengen Email Marketing Testimonial 1">
-               <img src="../img/jacques-debbie-f-testimonial.webp" alt="Denbie Email Marketing Testimonial 2">
-               <img src="../img/jacques-fuell-testimonial.webp" alt="Fuell Email Marketing Testimonial 3">
-            </div>
-         </section>
-          <section class="container">
-            <div class="offer-page-box">
-                <h2>What Happens Next</h2>
-                <ol>
-                    <li><strong>Secure Your Spot:</strong> Make your payment via PayPal or Wise (use your name and company as the payment reference).👇🏼 Pay now click your payment choice below.</li>
-                    <li>You share your offer, audience, and goal.</li>
-                    <li>I write both emails and send drafts in 3–5 days.</li>
-                    <li>We refine once to lock tone and message.</li>
-                    <li>You hit send and track opens, clicks, and replies.</li>
-                </ol>
-                <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://www.paypal.me/JacquesDamhuis" target="_blank" style="margin-right: 15px;">
-                      <img src="https://strategycontent.agency/img/paypal.jpeg" alt="Pay with PayPal" style="width: 120px; height: auto; border: none;">
-                    </a>
-                    <a href="https://wise.com/pay/me/jacquesandred1" target="_blank">
-                      <img src="https://strategycontent.agency/img/wise.jpeg" alt="Pay with Wise" style="width: 120px; height: auto; border: none;">
-                    </a>
-                </div>
-            </div>
-       </section>
-       <section class="container">
-            <div class="faq-section">
-               <h2>FAQ</h2>
-               <div class="faq-item">
-                  <p><strong>I don’t have a list yet?</strong></p>
-                  <p>I’ll write copy for your first opt-in email so you can start strong.</p>
+            </section>
+            <section class="container">
+               <h2>Why a Welcome Series Matters</h2>
+               <div class="three-square-images">
+                  <img src="../img/email-welcome-series-example-1.webp" alt="Example of an email that builds trust and rapport with new subscribers.">
+                  <img src="../img/email-welcome-series-example-2.webp" alt="Example of an email that provides value and educates new subscribers.">
+                  <img src="../img/email-welcome-series-example-3.webp" alt="Example of an email that encourages new subscribers to take the next step.">
                </div>
-               <div class="faq-item">
-                  <p><strong>Do you design the emails?</strong></p>
-                  <p>Yes. Within reason. I supply clean copy ready to paste into Mailchimp, ConvertKit, or your tool. With a simple layout idea.</p>
+            </section>
+            <section class="container">
+               <div class="offer-page-box">
+                  <h2>What Happens Next</h2>
+                  <p><strong>Step 1: Secure Your Spot</strong><br>Make your payment via PayPal or Wise (use your name and company as the payment reference).👇🏼 Pay now click your payment choice below.🫱🏽‍🫲🏾</p>
+                  <div style="text-align: center; margin: 20px 0;">
+                     <a href="https://www.paypal.me/JacquesDamhuis" target="_blank" style="margin-right: 15px;">
+                     <img src="https://strategycontent.agency/img/paypal.jpeg" alt="Pay with PayPal" style="width: 120px; height: auto; border: none;">
+                     </a>
+                     <a href="https://wise.com/pay/me/jacquesandred1" target="_blank">
+                     <img src="https://strategycontent.agency/img/wise.jpeg" alt="Pay with Wise" style="width: 120px; height: auto; border: none;">
+                     </a>
+                  </div>
+                  <p><strong>Step 2: Project Brief</strong><br>After payment, you'll receive a project brief to fill out. This is where you'll tell us about your brand, target audience, and goals for the welcome series.</p>
+                  <p><strong>Step 3: Delivery & Revisions</strong><br>You'll receive the first draft of your email welcome series within 3-5 business days. You'll have two rounds of revisions to request any changes.</p>
                </div>
-               <div class="faq-item">
-                  <p><strong>Can this become an automated sequence?</strong></p>
-                  <p>Yes. The copy can slot into your communication flow sequence.</p>
+            </section>
+            <section class="container">
+               <div class="faq-section">
+                  <h2>FAQ</h2>
+                  <div class="faq-item">
+                     <p><strong>What email marketing platform do you work with?</strong></p>
+                     <p>We can write the copy for any email marketing platform. We'll deliver the content in a Google Doc, and you can simply copy and paste it into your email service provider.</p>
+                  </div>
+                  <div class="faq-item">
+                     <p><strong>Can you set up the welcome series in my email marketing platform for me?</strong></p>
+                     <p>Yes, we can set up the welcome series for you for an additional fee. Contact us for a custom quote.</p>
+                  </div>
                </div>
-               <div class="faq-item">
-                  <p><strong>Will this fit my niche?</strong></p>
-                  <p>Yes. I research your market and write for your reader.</p>
+            </section>
+            <section class="container">
+               <div class="upsell-section">
+                  <h2>Ready to Take Your Email Marketing to the Next Level?</h2>
+                  <p>A welcome series is just the beginning. Check out our <a href="../services/services.html">full suite of email marketing services</a> to see how we can help you grow your business.</p>
                </div>
-            </div>
-         </section>
-           <section class="container">
-    <div class="upsell-section">
-      <h2>Want a package deal?</h2>
-      <p>Grow beyond two emails with a monthly plan. See my <a href="../services/email-marketing.html">full email service</a> for sequences, campaigns, and ongoing support that compounds results.</p>
-    </div>
-  </section>
-         <div class="container">
-            <h3>Share This Offer</h3>
-						<p>Know a founder with a quiet list. Share this starter and help them get moving.</p>
-            <ul>
-               <li class="cta-button"><a href="https://www.linkedin.com/shareArticle?mini=true&url=strategycontent.agency/offers/email-marketing-starter.html" target="_blank" rel="noopener">LinkedIn</a></li>
-               <li class="cta-button"><a href="https://wa.me/?text=Check%20out%20this%20Email%20Marketing%20Starter%20from%20Strategy%20Content%20Agency:%20https://strategycontent.agency/offers/email-marketing-starter.html" target="_blank" rel="noopener">WhatsApp</a></li>
-               <li class="cta-button"><a href="mailto:?subject=Email%20Marketing%20Starter&body=Take%20a%20look%20at%20this%20Email%20Marketing%20Starter:%20https://strategycontent.agency/offers/email-marketing-starter.html">Email</a></li>
-            </ul>
+            </section>
+            <section class="container">
+               <h3>Share This Offer</h3>
+               <ul>
+                  <li class="cta-button"><a href="https://www.linkedin.com/shareArticle?mini=true&url=strategycontent.agency/offers/email-marketing-starter.html" target="_blank" rel="noopener">LinkedIn</a></li>
+                  <li class="cta-button"><a href="https://wa.me/?text=Check%20out%20this%20Email%20Marketing%20Starter%20offer%20from%20Strategy%20Content%20Agency:%20https://strategycontent.agency/offers/email-marketing-starter.html" target="_blank" rel="noopener">WhatsApp</a></li>
+                  <li class="cta-button"><a href="mailto:?subject=Email%20Marketing%20Starter%20Offer&body=Take%20a%20look%20at%20this%20Email%20Marketing%20Starter%20offer%3A%20https%3A//strategycontent.agency/offers/email-marketing-starter.html">Email</a></li>
+               </ul>
+            </section>
          </div>
       </main>
       <footer>
@@ -223,7 +235,7 @@
          });
       </script>
       <!--Start of Tawk.to Script-->
-      <script>
+      <script type="text/javascript">
          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
          (function(){
          var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -233,6 +245,7 @@
          s1.setAttribute('crossorigin','*');
          s0.parentNode.insertBefore(s1,s0);
          })();
+
       </script>
       <!--End of Tawk.to Script-->
    </body>
