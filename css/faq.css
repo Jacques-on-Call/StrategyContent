@@ -1,0 +1,92 @@
+/* ===== FAQ Accordion Styles - Final Refinement for Colors ===== */
+
+.faq-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px; /* Add some padding to the container itself for smaller screens */
+}
+
+.faq-item {
+  margin-bottom: 12px; /* Space between each FAQ item for a card effect */
+  border-radius: 10px; /* Rounded corners for the entire item */
+  overflow: hidden; /* Ensures content and shadows are clipped to rounded corners */
+  background-color: var(--white); /* Explicitly set white background for the whole item */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for interaction */
+}
+
+.faq-item:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+/* Question Header Styling - Default (Inactive) State */
+.faq-question {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 18px 25px;
+  background-color: var(--white); /* Inactive questions are white */
+  color: var(--dark-grey); /* Dark grey text for readability */
+  border: none; /* No internal borders */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.faq-question:hover {
+  background-color: var(--light-grey); /* Slight light grey hover effect */
+  color: var(--blue); /* Change text color on hover for emphasis */
+}
+
+/* Icon for expand/collapse - Default (Inactive) State */
+.faq-question::after {
+  content: '▼'; /* Collapsed state icon */
+  font-size: 0.9em;
+  color: var(--blue); /* Icon color when inactive */
+  margin-left: 15px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* When the FAQ item is active (open state) */
+.faq-item.active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Lighter shadow when open */
+  transform: translateY(0); /* Reset transform if it was lifted on hover */
+}
+
+/* Question Header Styling - Active State (Green as per your image) */
+.faq-item.active .faq-question {
+  background-color: var(--green); /* Active question header is green */
+  color: var(--white); /* White text when active */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* A subtle white border for separation when green */
+  border-bottom-left-radius: 0; /* Remove rounding at bottom when open */
+  border-bottom-right-radius: 0;
+}
+
+/* Icon for expand/collapse - Active State */
+.faq-item.active .faq-question::after {
+  content: '▲'; /* Up arrow for expanded state */
+  transform: rotate(0deg);
+  color: var(--white); /* White icon when active */
+}
+
+/* Answer Content Styling */
+.faq-answer {
+  display: none;
+  padding: 20px 25px;
+  background-color: var(--white); /* White background for the answer */
+  color: var(--dark-grey); /* Dark grey text for the answer */
+  font-size: 0.95em;
+  line-height: 1.6;
+  border-top: 1px solid var(--light-grey); /* A subtle line separating the question from the answer */
+}
+
+.faq-item.active .faq-answer {
+  display: block; /* Show answer when .faq-item is active */
+}
