@@ -1,5 +1,0 @@
-npm error Missing script: "dev"
-npm error
-npm error To see a list of scripts, run:
-npm error   npm run
-npm error A complete log of this run can be found in: /home/ec2-user/.npm/_logs/2025-07-24T06_37_49_259Z-debug-0.log
