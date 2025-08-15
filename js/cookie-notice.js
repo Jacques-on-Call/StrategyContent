@@ -1,6 +1,14 @@
 export function initializeCookieNotice() {
+  loadCSS();
   showCookieNotice();
   document.getElementById('accept-cookies').addEventListener('click', acceptCookies);
+}
+
+function loadCSS() {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'css/cookie-notice.css';
+  document.head.appendChild(link);
 }
 
 function showCookieNotice() {

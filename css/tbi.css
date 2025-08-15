@@ -1,0 +1,1210 @@
+/* From css/blogs.css */
+/* Carousel Container */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 1rem 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.carousel-container {
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Improved slide styling */
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-slide.active {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel-slide .blog-post h2 {
+  margin-top: 0.5rem;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.carousel-slide .blog-post img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.5s ease;
+  object-fit: cover;
+}
+
+.carousel-slide .blog-post img:hover {
+  transform: scale(1.02);
+}
+
+/* Improved Button Styling */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--blue, #3498db);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.carousel-button:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.carousel-button.prev { left: 15px; }
+.carousel-button.next { right: 15px; }
+
+/* Progress indicator */
+.carousel-progress {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: var(--blue, #3498db);
+  transform: scale(1.3);
+}
+
+/* Improved Thumbnail Navigation */
+.carousel-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+  max-width: 90%;
+}
+
+.carousel-thumbnails img {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.65;
+  filter: grayscale(50%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.carousel-thumbnails img:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+  filter: grayscale(0%);
+}
+
+.carousel-thumbnails img.active {
+  border-color: var(--blue, #3498db);
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Blog post improvements */
+.blog-post {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-post p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.blog-post .cta-button {
+  align-self: flex-start;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  background: var(--blue, #3498db);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+  margin-top: 0.5rem;
+}
+
+.blog-post .cta-button:hover {
+  background: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Counter display */
+.slide-counter {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Autoplay controls */
+.autoplay-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 10px;
+}
+
+.autoplay-button {
+  background: #f0f0f0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.autoplay-button:hover {
+  background: #e0e0e0;
+}
+
+.autoplay-button.active {
+  background: var(--blue, #3498db);
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-button {
+    top: auto;
+    bottom: 10px;
+    transform: none;
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    background: white;
+    color: var(--blue, #3498db);
+  }
+
+  .carousel-button:hover {
+    transform: scale(1.1);
+  }
+
+  .carousel-button.prev { left: 25%; }
+  .carousel-button.next { right: 25%; }
+
+  .carousel-thumbnails img {
+    width: 50px;
+    height: 35px;
+  }
+
+  .blog-post .cta-button {
+    align-self: center;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.tag {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.4em 0.8em;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--scarlet);
+  color: var(--white);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 60px; /* Positioned at the bottom of the 60px header */
+  left: 0;
+  width: 100%; /* Full width of the viewport */
+  height: 4px;   /* A common height for progress bars */
+  background-color: var(--light-green); /* A background for the 'track' */
+  z-index: 700; /* Same z-index as header */
+}
+
+/* From css/style2.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* From css/style3.css */
+/* DOM Reset - Best practice to reset default browser styles */
+* {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Variables - Use custom properties for easier theming and maintenance */
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --blue: #6CA0DC;
+    --green: #C7EA46;
+    --scarlet: #FF2400;
+    --grey: #A9A9A9;
+    --link-light: #6CA0DC;
+    --link-dark: #C7EA46;
+    --link-on-blue: #C7EA46;
+    --link-on-black: #C7EA46;
+    --font-family: 'Roboto', sans-serif;
+    --container-width: 90%; /* Mobile container width */
+    --container-max-width: 1200px; /* Desktop max width */
+    --menu-width-mobile: 80%; /* Menu width on mobile */
+    --menu-width-desktop: 300px; /* Fixed menu width on desktop */
+}
+
+
+
+/* General Styles */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6; /* Improved readability */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/*a {
+    color: var(--link-color);
+    text-decoration: none;
+} */ /* Style all links */
+
+/* Base link style */
+a {
+    color: var(--link-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Header */
+header {
+    background-color: var(--blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Consistent padding */
+    height: 60px;
+}
+
+
+.logo {
+    height: 60px;
+    cursor: pointer;
+}
+
+
+.hamburger {
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    display: show;
+}
+
+
+/* Main Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;  /* Hidden off-screen initially */
+    width: 80%;
+    height: 100vh;
+    background-color: var(--green);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 9999;
+}
+
+
+.main-nav.show-menu {
+    right: 0; /* Slide in when active */
+}
+
+
+.main-nav ul {
+    list-style: none;
+    margin-top: 40px;
+	 align-items: center; /* Center the menu items horizontally */
+}
+
+
+.main-nav li {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+
+.main-nav a { /* Navigation links */
+    color: var(--black);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    display: block; /* Makes the whole list item clickable */
+    padding: 10px 0;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ... (rest of the styles for .logo-2, .close-btn, .friendly-message, .social-icons) ...  - You can adapt these from your previous code */
+.friendly-message {
+    margin-top: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Social Links Container */
+.social-icons {
+    display: flex;
+    justify-content: center; /* Align icons centrally */
+    gap: 10px; /* Closer spacing between the icons */
+    padding: 10px 0; /* Optional padding */
+}
+
+/* Social Links Individual Icons */
+.social-icons a img {
+    width: 30px;  /* Adjust icon size as per your preference */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* For hover effect */
+}
+
+/* Hover Effect for Social Media Icons */
+.social-icons a img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+/* Logo Styles */
+.logo-2 img {
+    width: 100px; /* Adjust the width based on the size of your logo */
+    height: auto;
+    position: absolute; /* Keep it fixed in place */
+    top: 10px;
+    left: 20px;
+    cursor: pointer;
+    margin-bottom: 40px; /* Increased margin to push the menu items down */
+}
+
+
+/* Close Button Styles */
+.close-btn img {
+    width: 30px; /* Adjust size for the close button */
+    height: auto;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--green);
+}
+
+
+.hero-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 1rem; /* Center image */
+}
+
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section .slogan {
+     font-size: 1.4rem;
+     font-weight: 600;
+   }
+
+/* ... (styles for h1, h2, h3, etc.) ... */
+h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+		padding-top: 20px
+}
+
+/* CTA Button */
+
+/* CTA Button Container */
+.cta-wrapper {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* CTA Button base styling */
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-width: 120px;
+    text-align: center;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA Button in light background sections */
+.container:nth-child(odd) .cta-button {
+    background-color: var(--green);
+    color: var(--black) !important;
+    border-color: var(--green);
+}
+
+.container:nth-child(odd) .cta-button:hover {
+    background-color: transparent);
+    color: var(--white);
+    border-color: var(--green);
+}
+
+/* CTA Button in blue background sections */
+.container:nth-child(even) .cta-button {
+    background-color: var(--green);
+    color: var(--black) ! important;
+    border-color: var(--green);
+}
+
+.container:nth-child(even) .cta-button:hover {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--green);
+}
+
+/* CTA Button in footer (if needed) */
+footer .cta-button {
+    background-color: var(--green);
+    color: var(--black);
+    border-color: var(--green);
+}
+
+
+/* ... (rest of your styles: .container, images, lists, footer, etc. ) - Adapt from your original CSS*/
+.container {
+    padding: 20px;
+    margin-bottom: 20px;
+    width: var(--container-width);
+    margin: 0 auto;
+    padding: 20px;
+    max-width: var(--container-max-width);
+}
+
+.container p {
+    margin-bottom: 10px;
+}
+
+.light-theme .container:nth-child(even),
+.dark-theme .container:nth-child(even)
+ {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+/* Links on blue backgrounds only */
+.light-theme .container:nth-child(even) a {
+    color: var(--link-on-blue);
+}
+
+ul, ol {
+    margin-left: 20px; /* Adjust this value to increase or decrease indentation */
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+ul {
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 10px;
+}
+/* Footer styles */
+footer {
+    background-color: var(--black);
+    color: var(--white); /* Applies to regular text */
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+footer a {
+    color: var(--link-on-black); /* This applies only to links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff6347; /* Change hover effect if desired */
+}
+
+/* Special intro section styling */
+/* special intro section */
+.intro-section {
+margin: 0 auto;
+padding: 2rem;
+
+}
+
+.intro-content {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.intro-text {
+font-size: 1.25rem;
+line-height: 1.5;
+margin: 0;
+transform: translateY(20px);
+animation: fadeInUp 0.5s ease forwards;
+}
+
+.highlight {
+font-weight: bold;
+position: relative;
+display: inline-block;
+}
+
+.highlight::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+width: 100%;
+height: 2px;
+background-color: currentColor;
+transform: scaleX(0);
+transition: transform 0.3s ease;
+}
+
+.highlight:hover::after {
+transforme: scaleX(1);
+}
+
+
+
+/* Media Queries */
+/* Media Queries for Larger Screens */
+@media (min-width: 768px) {
+    :root {
+        --container-width: 85%;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-section .slogan {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --container-width: 80%;
+    }
+
+    /* Desktop Navigation */
+    .main-nav {
+        width: var(--menu-width-desktop); /* Narrower menu on desktop */
+    }
+
+
+    .main-nav a {
+        font-size: 20px; /* Slightly smaller font on desktop */
+    }
+}
+
+/* Ellements */
+.get-quote {
+    position: fixed;
+    bottom: 20px;
+    left: 50%; /* Position horizontally in the middle */
+    transform: translateX(-50%); /* Adjust for element width */
+    background-color: var(--scarlet);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 9998;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 200px;
+}
+
+.chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--grey);
+    border: 2px solid var(--green);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+/* Cookie Notice */
+.cookie-notice {
+    position: fixed;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: white; /* White text for contrast */
+    padding: 10px;
+    text-align: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+    opacity: 0; /* Initially hidden */
+}
+
+.cookie-notice.show {
+    opacity: 1; /* Shown with transition */
+}
+
+.cookie-notice button {
+    background-color: var(--green); /* Use your green variable */
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cookie-notice p {
+    margin-bottom: 5px; /* Reduced margin for better spacing */
+}
+
+/* Blog posts */
+        .blog-post {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+.recaptcha-terms {
+    font-size: 12px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Frequently Asked Question Acordian */
+    .faq-container {
+      max-width: 100%;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .faq-item {
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .faq-question {
+      padding: 15px;
+      background-color: #f9f9f9;
+		color: var(--black) !important;
+      cursor: pointer;
+      position: relative;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background-color: #f0f0f0;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 15px;
+      transition: transform 0.3s ease;
+		color: var(--black) !important;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 15px;
+		background-color: var(--white);
+		color: var(--black) !important;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+		overflow: auto; /* Allows scrolling if content exceeds max-height */
+  transition: max-height 0.3s ease;
+      padding: 15px;
+    }
+
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --blue: #6CA0DC;
+    --green: #C7EA46;
+    --scarlet: #FF2400;
+    --grey: #A9A9A9;
+    --link-light: #0000FF;
+    --link-dark: #C7EA46;
+    --link-on-blue: #000000;
+    --link-on-black: #C7EA46;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-theme {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.dark-theme {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+a {
+    color: var(--link-light);
+}
+
+.dark-theme a {
+    color: var(--link-dark);
+}
+
+a:hover {
+    color: #ff6347;
+}
+
+header {
+    background-color: var(--blue);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    height: 60px;
+    cursor: pointer;
+}
+
+.hamburger {
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #b3f0b3;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-nav.show-menu {
+    right: 0;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.main-nav ul li {
+    margin-bottom: 20px;
+}
+
+.main-nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.friendly-message {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social-links a {
+    color: #000;
+    text-decoration: none;
+}
+
+.main-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 0;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.get-quote {
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    background-color: var(--scarlet);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 9999;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 200px;
+}
+
+.get-quote:hover {
+    background-color: #FF4500;
+}
+
+.chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--grey);
+    border: 2px solid var(--green);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chatbot:hover, .chatbot.active {
+    background-color: var(--green);
+}
+
+.container {
+    padding: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.light-theme .container:nth-child(even),
+.dark-theme .container:nth-child(even) {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.light-theme .container:nth-child(even) a,
+.dark-theme .container:nth-child(even) a {
+    color: var(--link-on-blue);
+}
+
+ .hero-section {
+     text-align: center;
+     padding: 2rem 0;
+     background-color: #C7EA46;
+   }
+
+   .hero-section svg {
+     max-width: 200px;
+     height: auto;
+     margin-bottom: 1rem;
+   }
+
+   .hero-section h1 {
+     font-size: 3.0rem;
+     margin-bottom: 0.5rem;
+   }
+
+   .hero-section .slogan {
+     font-size: 1.4rem;
+     font-weight: 600;
+   }
+
+.caption {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+.cta-wrapper {
+    text-align: center; /* Center-align the CTA button inside this wrapper */
+}
+.cta-button {
+    display: inline-block;
+    background-color: var(--green);
+    color: var(--black); /* Button text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    margin: 20px auto; /* This ensures the button is centered with some spacing */
+    text-align: center; /* Align text inside the button */
+}
+
+.cta-button a {
+    color: var(--black); /* Ensures link color inside the CTA button */
+    text-decoration: none;
+}
+
+.cta-button a:hover {
+    color: var(--scarlet); /* Hover effect for links inside the button */
+}
+
+footer {
+    background-color: var(--black);
+    color: var(--white); /* Applies to regular text */
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+footer a {
+    color: var(--link-on-black); /* This applies only to links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff6347; /* Change hover effect if desired */
+}
+
+@media (max-width: 768px) {
+    .get-quote {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .main-nav {
+        width: 100%;
+        text-align: center;
+    }
+}
+.svg-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.svg-container object {
+    width: 100%;
+    height: auto;
+}
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #search-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .blog-post {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
