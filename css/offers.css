@@ -151,19 +151,29 @@
 /* All your other button styles remain the same */
 .cta-offer-button {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 5px;
+  padding: 18px 32px; /* Increased from 12px 24px */
+  border-radius: 8px; /* Slightly more rounded */
   text-decoration: none;
-  font-weight: 600;
-  margin: 20px auto;
+  font-weight: 700; /* Bolder */
+  font-size: 18px; /* Larger text */
+  margin: 25px auto 20px; /* More top margin */
   transition: all 0.3s ease;
-  border: 1px solid var(--scarlet);
-  background: var(--green);
-  min-width: 120px;
+  border: none; /* Remove border */
+  background: var(--scarlet); /* Use your red accent color */
+  color: white !important; /* White text for better contrast */
+  min-width: 280px; /* Wider button */
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.2;
   position: relative;
   z-index: 1;
+  box-shadow: 0 4px 12px rgba(255, 36, 0, 0.3); /* Subtle shadow */
+  cursor: pointer;
+}
+
+.cta-offer-button:hover {
+  background: #cc1e00; /* Darker red on hover */
+  transform: translateY(-1px); /* Subtle lift effect */
+  box-shadow: 0 6px 16px rgba(255, 36, 0, 0.4);
 }
 
 /* New rule to correctly target the <a> tag inside the button */
@@ -256,13 +266,16 @@
     margin-right: 5px;
 }
 
+
 .contact-method-section input[type="text"] {
     margin-left: 10px;
-    padding: 8px; /* Slightly smaller for the "Other" field */
+    padding: 12px; /* Match the main form fields */
+    font-size: 16px; /* Match the main form fields */
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px; /* Match the main form fields */
+    flex: 1; /* Allow it to grow and fill available space */
+    min-width: 200px; /* Ensure minimum readable width */
 }
-
 .honeypot {
   /* This rule is critical to hide the field from human users */
   display: none;
@@ -313,6 +326,7 @@
 .faq-item p {
     margin: 5px 0;
 }
+
 
 .light-theme .container:nth-child(even) .faq-section h2,
 .dark-theme .container:nth-child(even) .faq-section h2 {
