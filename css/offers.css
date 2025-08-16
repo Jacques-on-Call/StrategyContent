@@ -313,3 +313,8 @@
 .faq-item p {
     margin: 5px 0;
 }
+
+.light-theme .container:nth-child(even) .faq-section h2,
+.dark-theme .container:nth-child(even) .faq-section h2 {
+  color: var(--white);
+}
