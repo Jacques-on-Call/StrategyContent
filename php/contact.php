@@ -127,16 +127,38 @@ function checkSubmissionLimit($ip) {
     if (mail($to, $subject, $message, $headers)) {
         error_log("Admin notification email sent successfully.");
 
-        // If the submission is for the SEO Starter Package, send a confirmation email to the client.
-        if ($form_source === 'SEO Starter Package') {
-            error_log("Form source is SEO Starter Package. Sending confirmation email to client at " . $email);
+        // Send a confirmation email to the client based on the form source.
+        $client_to = $email;
+        $first_name = explode(' ', $name)[0];
+        $client_subject = '';
+        $email_template_path = '';
 
-            $client_to = $email;
-            $client_subject = "Your SEO Starter Package - Next Steps";
-            $first_name = explode(' ', $name)[0];
+        switch ($form_source) {
+            case 'SEO Starter Package':
+                $client_subject = "Your SEO Starter Package - Next Steps";
+                $email_template_path = __DIR__ . '/email_templates/seo_starter_client_email.html';
+                break;
+            case 'Quick Content Boost':
+                $client_subject = "Your Quick Content Boost - Next Steps";
+                $email_template_path = __DIR__ . '/email_templates/quick_content_boost_client_email.html';
+                break;
+            case 'Landing Page Starter':
+                $client_subject = "Your Landing Page Starter - Next Steps";
+                $email_template_path = __DIR__ . '/email_templates/landing_page_starter_client_email.html';
+                break;
+            case 'Email Marketing Starter':
+                $client_subject = "Your Email Marketing Starter - Next Steps";
+                $email_template_path = __DIR__ . '/email_templates/email_marketing_starter_client_email.html';
+                break;
+            case 'Short-Form Video Social Media Offer':
+                $client_subject = "Your Short-Form Video Offer - Next Steps";
+                $email_template_path = __DIR__ . '/email_templates/short_video_social_offer_client_email.html';
+                break;
+        }
 
-            // Load the HTML email template
-            $email_template_path = __DIR__ . '/email_templates/seo_starter_client_email.html';
+        if ($client_subject && $email_template_path) {
+            error_log("Form source is " . $form_source . ". Sending confirmation email to client at " . $email);
+
             if (file_exists($email_template_path)) {
                 $client_message = file_get_contents($email_template_path);
                 $client_message = str_replace('[First Name]', htmlspecialchars($first_name), $client_message);
